@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>番茄钟</title>
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --text: #e0e0e0;
+    --text-secondary: #888;
+    --work: #e74c3c;
+    --work-glow: rgba(231, 76, 60, 0.3);
+    --short-break: #2ecc71;
+    --short-break-glow: rgba(46, 204, 113, 0.3);
+    --long-break: #3498db;
+    --long-break-glow: rgba(52, 152, 219, 0.3);
+    --ring-track: #2a2a2a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 40px 32px;
+    max-width: 420px;
+    width: 100%;
+  }
+
+  .mode-label {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    transition: color 0.4s;
+  }
+
+  .timer-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .timer-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .timer-ring .track {
+    fill: none;
+    stroke: var(--ring-track);
+    stroke-width: 6;
+  }
+
+  .timer-ring .progress {
+    fill: none;
+    stroke: var(--work);
+    stroke-width: 6;
+    stroke-linecap: round;
+    transition: stroke 0.4s, stroke-dashoffset 0.3s linear;
+  }
+
+  .time-display {
+    font-size: 72px;
+    font-weight: 300;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 2px;
+    z-index: 1;
+  }
+
+  .controls {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .btn {
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 50px;
+    padding: 12px 32px;
+    transition: all 0.2s;
+    outline: none;
+  }
+
+  .btn:active { transform: scale(0.96); }
+
+  .btn-primary {
+    background: var(--work);
+    color: #fff;
+    min-width: 120px;
+  }
+  .btn-primary:hover { filter: brightness(1.1); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid #333;
+  }
+  .btn-ghost:hover { color: var(--text); border-color: #555; }
+
+  .btn-sm {
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 20px;
+  }
+
+  .presets {
+    display: flex;
+    gap: 8px;
+  }
+
+  .preset {
+    background: var(--surface);
+    border: 1px solid #2a2a2a;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.2s;
+  }
+  .preset:hover { color: var(--text); border-color: #444; }
+  .preset.active { color: #fff; border-color: var(--work); background: rgba(231, 76, 60, 0.15); }
+
+  .session-tracker {
+    display: flex;
+    gap: 8px;
+    font-size: 18px;
+    opacity: 0.5;
+  }
+  .session-tracker .done { opacity: 1; }
+
+  .sound-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .sound-toggle:hover { color: var(--text); }
+
+  .notification-banner {
+    position: fixed;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--surface);
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 14px 28px;
+    font-size: 14px;
+    color: var(--text);
+    transition: top 0.4s ease;
+    z-index: 100;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+  .notification-banner.show { top: 24px; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  .timer-running .time-display { animation: pulse 2s ease-in-out infinite; }
+</style>
+</head>
+<body>
+
+<button class="sound-toggle" id="soundToggle" title="声音">🔊</button>
+<div class="notification-banner" id="banner"></div>
+
+<div class="app" id="app">
+  <div class="mode-label" id="modeLabel">专注</div>
+
+  <div class="timer-container">
+    <svg class="timer-ring" viewBox="0 0 200 200">
+      <circle class="track" cx="100" cy="100" r="94"/>
+      <circle class="progress" id="progressRing" cx="100" cy="100" r="94"
+              stroke-dasharray="590.62" stroke-dashoffset="0"/>
+    </svg>
+    <div class="time-display" id="timeDisplay">25:00</div>
+  </div>
+
+  <div class="presets" id="presets">
+    <button class="preset active" data-minutes="25">25 分钟</button>
+    <button class="preset" data-minutes="45">45 分钟</button>
+    <button class="preset" data-minutes="60">60 分钟</button>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-ghost btn-sm" id="resetBtn" disabled>重置</button>
+    <button class="btn btn-primary" id="startBtn">开始</button>
+    <button class="btn btn-ghost btn-sm" id="skipBtn" style="display:none">跳过</button>
+  </div>
+
+  <div class="session-tracker" id="sessionTracker"></div>
+</div>
+
+<script>
+const CIRCUMFERENCE = 2 * Math.PI * 94; // ~590.62
+
+const TIMERS = {
+  work: 25 * 60,
+  shortBreak: 5 * 60,
+  longBreak: 15 * 60,
+};
+
+const LABELS = {
+  work: '专注',
+  shortBreak: '短休息',
+  longBreak: '长休息',
+};
+
+let state = {
+  mode: 'work',
+  timeLeft: TIMERS.work,
+  totalTime: TIMERS.work,
+  running: false,
+  sessions: 0,
+  soundOn: true,
+  preset: 25,
+};
+
+let intervalId = null;
+let audioCtx = null;
+
+const $ = (sel) => document.querySelector(sel);
+const timeDisplay = $('#timeDisplay');
+const progressRing = $('#progressRing');
+const startBtn = $('#startBtn');
+const resetBtn = $('#resetBtn');
+const skipBtn = $('#skipBtn');
+const modeLabel = $('#modeLabel');
+const sessionTracker = $('#sessionTracker');
+const soundToggle = $('#soundToggle');
+const banner = $('#banner');
+const app = $('#app');
+const presetsContainer = $('#presets');
+
+function formatTime(seconds) {
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+}
+
+function updateDisplay() {
+  timeDisplay.textContent = formatTime(state.timeLeft);
+  const fraction = state.timeLeft / state.totalTime;
+  const offset = CIRCUMFERENCE * (1 - fraction);
+  progressRing.setAttribute('stroke-dashoffset', offset);
+
+  const colors = {
+    work: 'var(--work)',
+    shortBreak: 'var(--short-break)',
+    longBreak: 'var(--long-break)',
+  };
+  progressRing.style.stroke = colors[state.mode];
+  startBtn.style.background = colors[state.mode];
+  app.className = state.running ? 'app timer-running' : 'app';
+
+  // Highlight active preset
+  document.querySelectorAll('.preset').forEach(p => {
+    p.classList.toggle('active', Number(p.dataset.minutes) === state.preset);
+  });
+}
+
+function updateModeUI() {
+  modeLabel.textContent = LABELS[state.mode];
+  const glowColors = {
+    work: 'var(--work-glow)',
+    shortBreak: 'var(--short-break-glow)',
+    longBreak: 'var(--long-break-glow)',
+  };
+  document.body.style.setProperty('--current-glow', glowColors[state.mode]);
+}
+
+function updateSessionTracker() {
+  let html = '';
+  const total = Math.floor(state.sessions / 4) * 4 + 4;
+  for (let i = 0; i < 4; i++) {
+    const done = i < (state.sessions % 4);
+    html += `<span class="${done ? 'done' : ''}">🍅</span>`;
+  }
+  sessionTracker.innerHTML = html;
+}
+
+function playSound() {
+  if (!state.soundOn) return;
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+  const now = audioCtx.currentTime;
+  [0, 0.15, 0.3].forEach((delay, i) => {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.frequency.value = i === 0 ? 880 : i === 1 ? 1100 : 660;
+    osc.type = 'sine';
+    gain.gain.setValueAtTime(0.3, now + delay);
+    gain.gain.exponentialRampToValueAtTime(0.01, now + delay + 0.3);
+    osc.start(now + delay);
+    osc.stop(now + delay + 0.3);
+  });
+}
+
+function notify(title, body) {
+  playSound();
+
+  banner.textContent = `${title} — ${body}`;
+  banner.classList.add('show');
+  setTimeout(() => banner.classList.remove('show'), 3000);
+
+  if (Notification.permission === 'granted') {
+    new Notification(title, { body, icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🍅</text></svg>' });
+  } else if (Notification.permission === 'default') {
+    Notification.requestPermission();
+  }
+}
+
+function stopTimer() {
+  clearInterval(intervalId);
+  intervalId = null;
+  state.running = false;
+  startBtn.textContent = '开始';
+  resetBtn.disabled = false;
+  skipBtn.style.display = 'none';
+  updateDisplay();
+}
+
+function startTimer() {
+  if (state.running) {
+    // Pause
+    stopTimer();
+    startBtn.textContent = '继续';
+    return;
+  }
+
+  state.running = true;
+  startBtn.textContent = '暂停';
+  resetBtn.disabled = true;
+  if (state.mode !== 'work') {
+    skipBtn.style.display = '';
+  }
+  updateDisplay();
+
+  intervalId = setInterval(() => {
+    state.timeLeft--;
+    updateDisplay();
+
+    if (state.timeLeft <= 0) {
+      clearInterval(intervalId);
+      state.running = false;
+
+      if (state.mode === 'work') {
+        state.sessions++;
+        updateSessionTracker();
+
+        if (state.sessions % 4 === 0) {
+          state.mode = 'longBreak';
+          state.timeLeft = TIMERS.longBreak;
+          state.totalTime = TIMERS.longBreak;
+        } else {
+          state.mode = 'shortBreak';
+          state.timeLeft = TIMERS.shortBreak;
+          state.totalTime = TIMERS.shortBreak;
+        }
+        notify('工作完成！', '休息一下吧 🎉');
+      } else {
+        state.mode = 'work';
+        state.timeLeft = state.preset * 60;
+        state.totalTime = state.preset * 60;
+        notify('休息结束！', '开始新的番茄 🍅');
+      }
+
+      updateModeUI();
+      updateDisplay();
+      startBtn.textContent = '开始';
+      resetBtn.disabled = false;
+      skipBtn.style.display = 'none';
+    }
+  }, 1000);
+}
+
+function resetTimer() {
+  stopTimer();
+  state.mode = 'work';
+  state.timeLeft = state.preset * 60;
+  state.totalTime = state.preset * 60;
+  state.sessions = 0;
+  updateModeUI();
+  updateDisplay();
+  updateSessionTracker();
+  resetBtn.disabled = true;
+}
+
+function skipToNext() {
+  stopTimer();
+
+  if (state.mode === 'work') {
+    state.sessions++;
+    updateSessionTracker();
+    if (state.sessions % 4 === 0) {
+      state.mode = 'longBreak';
+      state.timeLeft = TIMERS.longBreak;
+      state.totalTime = TIMERS.longBreak;
+    } else {
+      state.mode = 'shortBreak';
+      state.timeLeft = TIMERS.shortBreak;
+      state.totalTime = TIMERS.shortBreak;
+    }
+  } else {
+    state.mode = 'work';
+    state.timeLeft = state.preset * 60;
+    state.totalTime = state.preset * 60;
+  }
+
+  updateModeUI();
+  updateDisplay();
+  resetBtn.disabled = false;
+  skipBtn.style.display = 'none';
+  startBtn.textContent = '开始';
+}
+
+startBtn.addEventListener('click', startTimer);
+resetBtn.addEventListener('click', resetTimer);
+skipBtn.addEventListener('click', skipToNext);
+
+soundToggle.addEventListener('click', () => {
+  state.soundOn = !state.soundOn;
+  soundToggle.textContent = state.soundOn ? '🔊' : '🔇';
+});
+
+presetsContainer.addEventListener('click', (e) => {
+  if (!e.target.classList.contains('preset')) return;
+  if (state.running) return;
+
+  const mins = Number(e.target.dataset.minutes);
+  state.preset = mins;
+  state.timeLeft = mins * 60;
+  state.totalTime = mins * 60;
+  state.mode = 'work';
+  state.sessions = 0;
+  updateModeUI();
+  updateDisplay();
+  updateSessionTracker();
+});
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'Space') {
+    e.preventDefault();
+    startTimer();
+  } else if (e.code === 'KeyR' && !e.ctrlKey && !e.metaKey) {
+    resetTimer();
+  } else if (e.code === 'KeyS' && !e.ctrlKey && !e.metaKey) {
+    skipToNext();
+  }
+});
+
+// Initial render
+updateModeUI();
+updateDisplay();
+updateSessionTracker();
+</script>
+</body>
+</html>

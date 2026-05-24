@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=表格工具
+Name[en]=Spreadsheet Tool
+Comment=WPS 表格查看编辑工具
+Comment[en]=WPS Spreadsheet Viewer & Editor
+Exec=__INSTALL_DIR__/run.sh
+Path=__INSTALL_DIR__
+Icon=__INSTALL_DIR__/icon
+Terminal=true
+Type=Application
+Categories=Office;Spreadsheet;
+StartupNotify=true
+MimeType=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;application/vnd.ms-excel;
