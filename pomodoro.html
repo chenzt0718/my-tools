@@ -190,6 +190,71 @@
     50% { opacity: 1; }
   }
   .timer-running .time-display { animation: pulse 2s ease-in-out infinite; }
+
+  .stats-bar {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .stats-bar .stat { text-align: center; }
+  .stats-bar .stat-value { font-size: 22px; font-weight: 600; color: var(--text); }
+  .stats-bar .stat-label { font-size: 11px; margin-top: 2px; }
+
+  .history-toggle {
+    background: none;
+    border: 1px solid #333;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 16px;
+    transition: all 0.2s;
+  }
+  .history-toggle:hover { color: var(--text); border-color: #555; }
+
+  .history-panel {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .history-panel.open { max-height: 400px; }
+
+  .history-list {
+    background: var(--surface);
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 16px;
+    max-height: 260px;
+    overflow-y: auto;
+    font-size: 13px;
+  }
+  .history-list::-webkit-scrollbar { width: 4px; }
+  .history-list::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+  .history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #1f1f1f;
+    color: var(--text-secondary);
+  }
+  .history-item:last-child { border-bottom: none; }
+  .history-item .date { color: var(--text); }
+  .history-empty { text-align: center; color: #555; padding: 20px 0; }
+
+  .history-clear {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 10px;
+    float: right;
+  }
+  .history-clear:hover { color: var(--work); }
 </style>
 </head>
 <body>
@@ -222,6 +287,21 @@
   </div>
 
   <div class="session-tracker" id="sessionTracker"></div>
+
+  <div class="stats-bar" id="statsBar">
+    <div class="stat"><div class="stat-value" id="statToday">0</div><div class="stat-label">今日</div></div>
+    <div class="stat"><div class="stat-value" id="statTotal">0</div><div class="stat-label">总计</div></div>
+    <div class="stat"><div class="stat-value" id="statStreak">0</div><div class="stat-label">连续天</div></div>
+  </div>
+
+  <button class="history-toggle" id="historyToggle">📋 历史记录</button>
+
+  <div class="history-panel" id="historyPanel">
+    <div class="history-list" id="historyList">
+      <div class="history-empty">还没有完成过番茄 🍅</div>
+    </div>
+    <button class="history-clear" id="historyClear">清除记录</button>
+  </div>
 </div>
 
 <script>
@@ -264,6 +344,108 @@ const soundToggle = $('#soundToggle');
 const banner = $('#banner');
 const app = $('#app');
 const presetsContainer = $('#presets');
+
+// ── 历史记录 DOM 引用 ──
+const statToday = $('#statToday');
+const statTotal = $('#statTotal');
+const statStreak = $('#statStreak');
+const historyToggle = $('#historyToggle');
+const historyPanel = $('#historyPanel');
+const historyList = $('#historyList');
+const historyClear = $('#historyClear');
+
+// ── 历史记录 & 统计 ──
+const HISTORY_KEY = 'pomodoro_history';
+const MAX_HISTORY = 100;
+
+const HistoryManager = {
+  getAll() {
+    try {
+      return JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+    } catch { return []; }
+  },
+
+  add(entry) {
+    const list = this.getAll();
+    list.unshift(entry);
+    if (list.length > MAX_HISTORY) list.length = MAX_HISTORY;
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(list));
+  },
+
+  clear() {
+    localStorage.removeItem(HISTORY_KEY);
+  },
+
+  stats() {
+    const list = this.getAll();
+    const today = new Date().toISOString().slice(0, 10);
+    const todayCount = list.filter(e => e.date === today).length;
+
+    let streak = 0;
+    const dates = [...new Set(list.map(e => e.date))].sort().reverse();
+    // Start from today if we have entries, otherwise from yesterday
+    const start = dates[0] === today ? 0 : 1;
+    const now = new Date();
+    for (let i = 0, d = start; i < dates.length; i++, d++) {
+      const expected = new Date(now);
+      expected.setDate(expected.getDate() - d);
+      if (dates[i] === expected.toISOString().slice(0, 10)) {
+        streak++;
+      } else break;
+    }
+
+    return { todayCount, total: list.length, streak };
+  },
+};
+
+function updateStats() {
+  const { todayCount, total, streak } = HistoryManager.stats();
+  statToday.textContent = todayCount;
+  statTotal.textContent = total;
+  statStreak.textContent = streak;
+}
+
+function renderHistory() {
+  const list = HistoryManager.getAll();
+  if (list.length === 0) {
+    historyList.innerHTML = '<div class="history-empty">还没有完成过番茄 🍅</div>';
+    return;
+  }
+  historyList.innerHTML = list.map(e =>
+    `<div class="history-item">
+      <span class="date">${e.date}</span>
+      <span>${e.time} · ${e.duration}分钟 · 🍅</span>
+    </div>`
+  ).join('');
+}
+
+function recordSession() {
+  const now = new Date();
+  HistoryManager.add({
+    date: now.toISOString().slice(0, 10),
+    time: `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`,
+    duration: state.preset,
+    mode: 'work',
+  });
+  updateStats();
+  renderHistory();
+}
+
+let historyOpen = false;
+historyToggle.addEventListener('click', () => {
+  historyOpen = !historyOpen;
+  historyPanel.classList.toggle('open', historyOpen);
+  historyToggle.textContent = historyOpen ? '📋 收起' : '📋 历史记录';
+  renderHistory();
+});
+
+historyClear.addEventListener('click', () => {
+  if (confirm('确定要清除所有历史记录吗？')) {
+    HistoryManager.clear();
+    updateStats();
+    renderHistory();
+  }
+});
 
 function formatTime(seconds) {
   const m = Math.floor(seconds / 60);
@@ -381,6 +563,7 @@ function startTimer() {
 
       if (state.mode === 'work') {
         state.sessions++;
+        recordSession();
         updateSessionTracker();
 
         if (state.sessions % 4 === 0) {
@@ -489,6 +672,7 @@ document.addEventListener('keydown', (e) => {
 updateModeUI();
 updateDisplay();
 updateSessionTracker();
+updateStats();
 </script>
 </body>
 </html>
