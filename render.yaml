@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: markdown-notes
+    env: python
+    region: singapore
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    rootDir: notes-app
