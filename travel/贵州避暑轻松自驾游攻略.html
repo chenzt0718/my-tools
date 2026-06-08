@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>贵州避暑轻松自驾游攻略 · 8天7晚 · 凉都西线</title>
+<style>
+  :root {
+    --bg: #1a1b2e;
+    --card: #252740;
+    --accent: #4fc3a8;
+    --accent2: #f0a060;
+    --text: #d0d0dc;
+    --text-secondary: #9898b0;
+    --border: #353855;
+    --tag-bg: #2d2f50;
+    --warning-bg: #3d3020;
+    --warning-text: #f0c060;
+    --info-bg: #203040;
+    --info-text: #60b0d0;
+    --danger-bg: #3d2028;
+    --danger-text: #e08090;
+    --success-bg: #203830;
+    --success-text: #60c090;
+    --header-bg: #1e2038;
+    --cool-accent: #64b5f6;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 0;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #1a3a2a 0%, #1a2b4a 50%, #2a3a1a 100%);
+    padding: 48px 24px 40px;
+    text-align: center;
+    border-bottom: 3px solid var(--cool-accent);
+  }
+  .hero h1 {
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    color: var(--cool-accent);
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+  }
+  .hero .meta {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .hero .meta span {
+    background: var(--tag-bg);
+    color: var(--text-secondary);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: .9rem;
+  }
+  .hero .highlight {
+    background: #1a3a4a;
+    color: var(--cool-accent);
+    border: 1px solid var(--cool-accent);
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+  .nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: .82rem;
+    padding: 4px 12px;
+    border-radius: 14px;
+    white-space: nowrap;
+    transition: .15s;
+  }
+  .nav a:hover, .nav a:focus { background: var(--cool-accent); color: #000; }
+
+  .container { padding: 24px 20px 48px; }
+  section { margin-bottom: 40px; }
+  h2 {
+    font-size: 1.5rem;
+    color: #fff;
+    border-left: 3px solid var(--cool-accent);
+    padding-left: 12px;
+    margin-bottom: 16px;
+  }
+  h3 {
+    font-size: 1.15rem;
+    color: var(--cool-accent);
+    margin: 20px 0 8px;
+  }
+  h4 {
+    font-size: 1rem;
+    color: #ccc;
+    margin: 12px 0 6px;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    font-size: .88rem;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    background: var(--tag-bg);
+    color: var(--cool-accent);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,.02); }
+
+  .day-card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 20px 20px 16px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--cool-accent);
+  }
+  .day-card .day-num {
+    font-size: .78rem;
+    color: var(--cool-accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .day-card h3 { margin-top: 2px; font-size: 1.25rem; color: #fff; }
+  .day-card .drive {
+    display: inline-block;
+    font-size: .82rem;
+    background: var(--tag-bg);
+    color: var(--accent2);
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+  .timeline {
+    margin: 12px 0;
+    padding-left: 0;
+    list-style: none;
+  }
+  .timeline li {
+    padding: 6px 0 6px 28px;
+    position: relative;
+    border-left: 1px solid var(--border);
+    margin-left: 8px;
+  }
+  .timeline li::before {
+    content: '';
+    position: absolute;
+    left: -5px; top: 12px;
+    width: 9px; height: 9px;
+    background: var(--cool-accent);
+    border-radius: 50%;
+  }
+
+  .callout {
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: .88rem;
+  }
+  .callout.tip    { background: var(--success-bg); color: var(--success-text); }
+  .callout.warn   { background: var(--warning-bg); color: var(--warning-text); }
+  .callout.info   { background: var(--info-bg);    color: var(--info-text); }
+  .callout.danger { background: var(--danger-bg);  color: var(--danger-text); }
+  .callout strong { display: block; margin-bottom: 2px; font-size: .9rem; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+  .tag {
+    font-size: .76rem;
+    padding: 3px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .tag.food   { background: #3d3020; color: #f0a060; }
+  .tag.photo  { background: #302040; color: #b080e0; }
+  .tag.edu    { background: #203830; color: #60c090; }
+  .tag.safety { background: #3d2028; color: #e08090; }
+  .tag.cool   { background: #1a3a4a; color: #64b5f6; }
+
+  /* Map */
+  .map-section { margin: 16px 0 24px; }
+  .map-container {
+    width: 100%; height: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #1a1b2e;
+    z-index: 1;
+  }
+  .leaflet-control-zoom a { background: var(--card) !important; color: var(--text) !important; border-color: var(--border) !important; }
+  .leaflet-control-attribution { background: rgba(26,27,46,.85) !important; color: #555 !important; font-size: .65rem !important; }
+  .map-legend {
+    display: flex; flex-wrap: wrap; gap: 16px; margin-top: 10px;
+    font-size: .8rem; color: var(--text-secondary);
+  }
+  .map-legend .dot {
+    width: 10px; height: 10px; border-radius: 50%; display: inline-block;
+    margin-right: 5px; vertical-align: middle;
+  }
+  .leaflet-popup-content-wrapper { background: var(--card) !important; color: var(--text) !important; border-radius: 8px !important; border: 1px solid var(--border) !important; }
+  .leaflet-popup-tip { background: var(--card) !important; }
+  .leaflet-popup-content { font-family: inherit !important; font-size: .85rem !important; margin: 8px 12px !important; }
+  .leaflet-popup-content strong { color: var(--cool-accent); }
+  .leaflet-container { background: #1a1b2e !important; }
+
+  /* Budget */
+  .budget-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 8px 0 4px;
+  }
+  .budget-bar div { height: 100%; }
+  .budget-legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: .8rem; margin-bottom: 12px; }
+  .budget-legend span { display: flex; align-items: center; gap: 4px; }
+  .budget-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
+
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { padding: 4px 0 4px 22px; position: relative; }
+  .checklist li::before { content: '☐'; position: absolute; left: 0; color: var(--text-secondary); }
+
+  /* comparison table */
+  .comparison { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0; }
+  @media (max-width:600px) { .comparison { grid-template-columns:1fr; } }
+
+  footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-secondary);
+    font-size: .8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    body { font-size: .94rem; }
+    .hero { padding: 32px 16px 28px; }
+    .container { padding: 16px 12px 32px; }
+    .day-card { padding: 14px 12px 12px; }
+    th, td { padding: 8px; font-size: .8rem; }
+    .nav a { font-size: .74rem; padding: 3px 8px; }
+    .map-container { height: 300px; }
+  }
+
+  @media print {
+    body { background: #fff; color: #222; }
+    .nav { display: none; }
+    .day-card, .callout { break-inside: avoid; }
+    .day-card { background: #f8f8f8; border-left-color: #333; }
+    h2 { color: #111; }
+  }
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+<header class="hero">
+  <h1>贵州避暑轻松自驾游攻略</h1>
+  <p class="sub">凉都西线 · 贵阳 ⇢ 织金洞 ⇢ 六盘水 ⇢ 乌蒙草原 ⇢ 兴义</p>
+  <div class="meta">
+    <span>8天7晚</span>
+    <span>3人家庭</span>
+    <span>自驾西线</span>
+    <span>7-8月暑假</span>
+    <span class="highlight">19°C 避暑</span>
+    <span class="highlight">避开人潮</span>
+  </div>
+</header>
+
+<nav class="nav">
+  <a href="#overview">行程总览</a>
+  <a href="#why">为什么选西线</a>
+  <a href="#day1">Day1·贵阳</a>
+  <a href="#day2">Day2·织金洞</a>
+  <a href="#day3">Day3·六盘水</a>
+  <a href="#day4">Day4·乌蒙草原</a>
+  <a href="#day5">Day5·马岭河</a>
+  <a href="#day6">Day6·万峰林</a>
+  <a href="#day7">Day7·晴隆</a>
+  <a href="#day8">Day8·返程</a>
+  <a href="#budget">费用预算</a>
+  <a href="#tips">实用贴士</a>
+  <a href="#alt">备选方案</a>
+</nav>
+
+<div class="container">
+
+<!-- ═══════════ 1. 行程总览 ═══════════ -->
+<section id="overview">
+  <h2>行程总览</h2>
+  <p style="color:var(--text-secondary); margin-bottom:12px;">
+    走贵州<strong style="color:var(--cool-accent)">西部冷门线路</strong>，以"中国凉都"六盘水为核心，串联溶洞、草原、峡谷、峰林。
+    平均海拔1500-2500m，夏季均温 <strong style="color:var(--cool-accent)">19-25°C</strong>，
+    全程自驾<strong style="color:var(--cool-accent)">约830km</strong>，每天车程≤4h，2天零驾驶纯游玩。
+  </p>
+
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>日期</th><th>行程</th><th>车程</th><th>亮点</th><th>气温</th><th>住宿</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Day 1</td><td>福州 ✈ 贵阳，取车，市区闲逛</td><td>—</td><td>省博、花溪湿地</td><td>23-28°C</td><td>贵阳·亚朵</td></tr>
+      <tr><td>Day 2</td><td>贵阳 → 织金洞 → 六盘水</td><td>约3.5h</td><td>中国溶洞之王（洞内16°C）</td><td>16-23°C</td><td>六盘水·亚朵</td></tr>
+      <tr><td>Day 3</td><td>六盘水全天（🚫零驾驶）</td><td>—</td><td>梅花山、湿地公园、水城古镇</td><td>19-25°C</td><td>六盘水·亚朵</td></tr>
+      <tr><td>Day 4</td><td>六盘水 → 乌蒙大草原</td><td>约1.5h</td><td>高原草原、骑马、风车日落</td><td>11-22°C</td><td>草原民宿</td></tr>
+      <tr><td>Day 5</td><td>乌蒙草原 → 兴义，马岭河峡谷</td><td>约2.5h</td><td>地球最美丽伤痕·瀑布群</td><td>22-28°C</td><td>兴义·亚朵</td></tr>
+      <tr><td>Day 6</td><td>兴义万峰林全天（🚫零驾驶）</td><td>—</td><td>喀斯特峰林、稻田骑行</td><td>22-28°C</td><td>兴义·亚朵</td></tr>
+      <tr><td>Day 7</td><td>兴义 → 晴隆24道拐 → 贵阳</td><td>约4h</td><td>抗战公路·红色研学</td><td>20-26°C</td><td>贵阳·亚朵</td></tr>
+      <tr><td>Day 8</td><td>贵阳 ✈ 福州</td><td>—</td><td>买伴手礼、返程</td><td>—</td><td>—</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- 与热门线路对比 -->
+  <div class="comparison" style="margin-top:16px;">
+    <div style="background:var(--card);border-radius:10px;padding:14px;border-top:3px solid var(--cool-accent);">
+      <h4 style="margin-top:0;color:var(--cool-accent);">本路线（西线·凉都）</h4>
+      <ul style="padding-left:18px;font-size:.84rem;color:var(--text-secondary);line-height:2;">
+        <li>夏季均温 <strong style="color:var(--cool-accent)">19-25°C</strong></li>
+        <li>织金洞 ≈ 黄果树人流 1/5</li>
+        <li>万峰林 ≈ 小七孔人流 1/3</li>
+        <li>乌蒙草原 ≈ 梵净山人流 1/10</li>
+        <li>全程 <strong style="color:var(--cool-accent)">830km</strong>（少开约70km）</li>
+      </ul>
+    </div>
+    <div style="background:var(--card);border-radius:10px;padding:14px;border-top:3px solid var(--accent2);">
+      <h4 style="margin-top:0;color:var(--accent2);">常规路线（东线·热门）</h4>
+      <ul style="padding-left:18px;font-size:.84rem;color:var(--text-secondary);line-height:2;">
+        <li>荔波/西江偏热（24-32°C）</li>
+        <li>黄果树暑期人挤人</li>
+        <li>小七孔排队1h+常态</li>
+        <li>梵净山抢票像春运</li>
+        <li>全程 ~900km</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 互动地图 -->
+  <div class="map-section">
+    <div id="routeMap" class="map-container"></div>
+    <div class="map-legend">
+      <span><span class="dot" style="background:#ff6b6b"></span> 贵阳</span>
+      <span><span class="dot" style="background:#ffc000"></span> 织金洞</span>
+      <span><span class="dot" style="background:#64b5f6"></span> 六盘水</span>
+      <span><span class="dot" style="background:#4fc3a8"></span> 乌蒙草原</span>
+      <span><span class="dot" style="background:#c084fc"></span> 兴义</span>
+      <span style="color:var(--text-secondary)">── 自驾环线（约830km）</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 2. 为什么选西线 ═══════════ -->
+<section id="why">
+  <h2>为什么选这条路线？</h2>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px;">
+    <div style="background:var(--card);border-radius:10px;padding:16px;text-align:center;">
+      <div style="font-size:2rem;color:var(--cool-accent);">19°C</div>
+      <div style="font-size:.85rem;color:var(--text-secondary);margin-top:4px;">六盘水夏季均温<br>中国唯一"凉都"认证</div>
+    </div>
+    <div style="background:var(--card);border-radius:10px;padding:16px;text-align:center;">
+      <div style="font-size:2rem;color:var(--cool-accent);">1/5</div>
+      <div style="font-size:.85rem;color:var(--text-secondary);margin-top:4px;">织金洞客流 vs 黄果树<br>同样顶级，少等2小时</div>
+    </div>
+    <div style="background:var(--card);border-radius:10px;padding:16px;text-align:center;">
+      <div style="font-size:2rem;color:var(--cool-accent);">2天</div>
+      <div style="font-size:.85rem;color:var(--text-secondary);margin-top:4px;">零驾驶纯游玩日<br>节奏轻松不赶路</div>
+    </div>
+    <div style="background:var(--card);border-radius:10px;padding:16px;text-align:center;">
+      <div style="font-size:2rem;color:var(--cool-accent);">16°C</div>
+      <div style="font-size:.85rem;color:var(--text-secondary);margin-top:4px;">织金洞恒温<br>天然空调，夏天要穿外套</div>
+    </div>
+  </div>
+
+  <div class="callout info" style="margin-top:16px;">
+    <strong>线路设计理念</strong>
+    贵州暑假热门景点（黄果树、小七孔、西江苗寨、梵净山）暑期人流量爆表，排队动辄1-2小时。
+    这条西线精选同等甚至更高品质的替代景点，游客密度仅为热门线路的 1/5 ~ 1/3，
+    且全程海拔更高、气温更低。适合"不想排队、不想流汗、不想赶路"的家庭。
+  </div>
+</section>
+
+<!-- ═══════════ 3. 每日详细安排 ═══════════ -->
+<section>
+  <h2>每日详细安排</h2>
+
+  <!-- Day 1 -->
+  <article class="day-card" id="day1">
+    <div class="day-num">Day 1</div>
+    <h3>抵达贵阳 · 轻松开局</h3>
+    <span class="drive">🚗 机场取车，市区自驾约30min</span>
+    <ul class="timeline">
+      <li><strong>上午</strong> — 福州长乐 → 贵阳龙洞堡（约2h15min）。机场取车（神州/一嗨App提前订，SUV ¥250-400/天）。检查车况、拍视频留证。</li>
+      <li><strong>12:30</strong> — 入住 <strong>贵阳喷水池延安西路地铁站亚朵酒店</strong>（2025年新开业，设施最新）。</li>
+      <li><strong>13:30</strong> — 午餐：<strong>老凯俚酸汤鱼</strong>（省府路店），人均¥80。</li>
+      <li><strong>15:00</strong> — <strong>贵州省博物馆</strong>（免费，提前公众号预约）。了解贵州从古生物化石到多民族文化，冷气足、不晒太阳，2h刚好逛完。给后面的地质之旅打个底。</li>
+      <li><strong>17:30</strong> — <strong>花溪湿地公园</strong> 或 <strong>观山湖公园</strong> 散步，凉风习习。</li>
+      <li><strong>19:00</strong> — 晚餐：<strong>丝恋红汤丝娃娃</strong>，人均¥50。早点休息。</li>
+    </ul>
+    <div class="tags">
+      <span class="tag food">酸汤鱼 ¥80/人</span>
+      <span class="tag edu">贵州省博物馆</span>
+      <span class="tag cool">23-28°C</span>
+    </div>
+    <div class="callout tip">
+      <strong>小贴士</strong>
+      省博物馆的"古生物王国"展厅有贵州龙化石和关岭海百合化石——15岁孩子如果是第一次看到真实的地质年代证据，会非常震撼。这是后面几天地质之旅的最佳预习。
+    </div>
+  </article>
+
+  <!-- Day 2 -->
+  <article class="day-card" id="day2">
+    <div class="day-num">Day 2</div>
+    <h3>织金洞 · 地下天宫</h3>
+    <span class="drive">🚗 贵阳 → 织金洞（约120km / 1.5h）→ 六盘水（约140km / 2h），合计约3.5h</span>
+    <ul class="timeline">
+      <li><strong>07:30</strong> — 早餐后出发，约9点抵达织金洞景区。提前在"织金洞景区"公众号购票（旺季¥110+¥20观光车+¥10安全包≈¥140/人，学生凭证免门票）。</li>
+      <li><strong>09:15</strong> — 进洞！<strong>洞内恒温14-16°C</strong>，记得带薄外套。全程6.6公里单向游览，约2.5-3小时。精华段：双狮迎宾→广寒宫→银雨树→霸王盔→江山多娇。银雨树是镇洞之宝，17米高的石笋世界罕见。</li>
+      <li><strong>12:00</strong> — 出洞后在景区门口吃顿简餐，<strong>织金发粑</strong> 和 <strong>荞凉粉</strong> 是当地特色，人均¥20-30。</li>
+      <li><strong>13:00</strong> — 驱车前往六盘水（约2h），沿途从喀斯特峰林过渡到云贵高原，窗外就是风景。</li>
+      <li><strong>15:30</strong> — 抵达六盘水！明显感到凉意，室外温度可能只有22°C。入住 <strong>六盘水高铁站人民路亚朵酒店</strong>（2025年新开业，评分4.8）。</li>
+      <li><strong>17:00</strong> — <strong>水城古镇</strong> 闲逛（免费），看看三线建设时期的老建筑，吃 <strong>水城烙锅</strong>——六盘水灵魂美食，人均¥50。</li>
+      <li><strong>晚上</strong> — 穿件薄外套出门散步，19°C的晚风会让你理解什么叫"凉都"。</li>
+    </ul>
+    <div class="tags">
+      <span class="tag food">水城烙锅 ¥50/人</span>
+      <span class="tag food">织金发粑 ¥15</span>
+      <span class="tag photo">银雨树·镇洞之宝</span>
+      <span class="tag edu">喀斯特溶洞·钟乳石成因</span>
+      <span class="tag cool">洞内16°C恒温</span>
+    </div>
+    <div class="callout info">
+      <strong>研学知识点</strong>
+      织金洞是2.5亿年前海底沉积的石灰岩被地下水溶蚀形成的。洞内的钟乳石每100年才长1-3厘米，一根17米高的"银雨树"需要约10万年才能形成。这里被《中国国家地理》评为"中国最美溶洞"第一名，比桂林的溶洞规模大得多——整个洞厅可以装下一座20层高楼。
+    </div>
+    <div class="callout warn">
+      <strong>注意事项</strong>
+      洞内全程步行，台阶较多（上下约800级），膝盖不好可带登山杖。地面湿滑，穿防滑鞋。洞内无手机信号，提前下载讲解App或租讲解器¥20。拍照不要开闪光灯——会破坏钟乳石的微生物环境。
+    </div>
+  </article>
+
+  <!-- Day 3 -->
+  <article class="day-card" id="day3">
+    <div class="day-num">Day 3 · 🚫零驾驶日</div>
+    <h3>六盘水全天 · 中国凉都深度游</h3>
+    <span class="drive">🅿️ 车停酒店，今天不挪车</span>
+    <ul class="timeline">
+      <li><strong>08:30</strong> — 睡到自然醒。酒店早餐（¥48/人，羊肉粉口碑极好，多吃一碗）。</li>
+      <li><strong>09:30</strong> — <strong>梅花山国际旅游度假区</strong>（距酒店约30min车程/打车）。坐 <strong>梅花山索道</strong>（号称世界最长山地索道，单程约40min），从城市上空掠过，俯瞰整个六盘水。索道约¥118/人往返。山顶有旋转餐厅、玻璃栈道、高山草坪，气温只有15-20°C。</li>
+      <li><strong>12:30</strong> — 山顶或下山后在市区午餐：<strong>六盘水羊肉粉</strong>（人均¥20），贵州最好吃的羊肉粉在六盘水！</li>
+      <li><strong>14:00</strong> — <strong>明湖国家湿地公园</strong>（免费），高山湖泊+湿地，漫步木栈道，水鸟成群。15岁孩子可以在湖边骑行（租自行车¥20/小时）。</li>
+      <li><strong>16:00</strong> — 回酒店游泳/休息。六盘水的下午也就24°C，酒店房间不用开空调，开窗自然风最舒服。</li>
+      <li><strong>18:00</strong> — 晚餐：<strong>川心小区夜市</strong>——烙锅、烤鱼、豆腐圆子、冰粉。全贵州性价比最高的夜市之一，人均¥40吃撑。</li>
+    </ul>
+    <div class="tags">
+      <span class="tag food">羊肉粉 ¥20/人</span>
+      <span class="tag food">夜市 ¥40/人</span>
+      <span class="tag photo">梅花山索道·全景</span>
+      <span class="tag edu">高原湿地生态</span>
+      <span class="tag cool">六盘水19°C均温</span>
+    </div>
+    <div class="callout tip">
+      <strong>为什么六盘水这么凉快？</strong>
+      六盘水市区海拔1800m，是贵州海拔最高的地级市。按"每升高1000米降温6°C"的规律，它比贵阳（海拔1100m）低约4°C，比福州低了将近15°C。加上贵州本身夏季多阴雨，太阳直射少，造就了"中国凉都"的独特气候。晚上睡觉要盖被子——这是真的。
+    </div>
+  </article>
+
+  <!-- Day 4 -->
+  <article class="day-card" id="day4">
+    <div class="day-num">Day 4</div>
+    <h3>乌蒙大草原 · 贵州版阿勒泰</h3>
+    <span class="drive">🚗 六盘水 → 乌蒙大草原，约90km / 1.5h</span>
+    <ul class="timeline">
+      <li><strong>08:00</strong> — 早餐后出发。沿途从城市到高山，海拔从1800m缓缓升至2500m，路况好、车少，自驾体验极佳。</li>
+      <li><strong>09:30</strong> — 抵达<strong>乌蒙大草原</strong>（门票¥30/人，自驾车免费入园！提前公众号预约，每天限800辆车）。这是贵州版"阿勒泰"——10万亩高山草甸，海拔2500-2857m，夏季气温 <strong>11-22°C</strong>，记得带一件抓绒或薄羽绒服！</li>
+      <li><strong>10:00</strong> — <strong>骑马体验</strong>（¥50-80/圈），草原上有当地牧民牵马。白草坪和海子头是最佳骑马点。</li>
+      <li><strong>12:00</strong> — 草原上野餐（自带干粮+水），或者景区内有烤羊肉串、烤土豆、荞麦饼等小吃。</li>
+      <li><strong>14:00</strong> — 开车沿景区公路深入：<strong>观佛台</strong>（天气好能看到佛光）→ <strong>百草坪</strong>（风车阵+草甸，出片率极高）→ <strong>长海子</strong>（高山湖泊，水面如镜）。全程走走停停，不赶时间。</li>
+      <li><strong>17:30</strong> — <strong>日落时分</strong>，找一处山坡坐下，看夕阳把风车和草甸染成金色。这是整个旅程中最安静、最美的时刻。</li>
+      <li><strong>晚上</strong> — 入住草原上的民宿或蒙古包（推荐 <strong>乌蒙草原帐篷酒店</strong> 或 <strong>十方云舍</strong>，提前订！约¥300-500/晚）。晚上气温可能降到10°C，穿厚衣服出来看星星——高原上的星空没有光污染，银河肉眼可见。</li>
+    </ul>
+    <div class="tags">
+      <span class="tag photo">风车+草甸·出片</span>
+      <span class="tag photo">高山日落</span>
+      <span class="tag edu">高山草甸生态</span>
+      <span class="tag edu">风力发电·新能源</span>
+      <span class="tag cool">11-22°C 要穿外套!</span>
+    </div>
+    <div class="callout info">
+      <strong>研学知识点</strong>
+      乌蒙大草原是云贵高原上典型的高山草甸生态系统。海拔2500米以上，树木无法生长，只有耐寒的草本植物和矮灌木。这里也是南方最大的风力发电场之一——可以和孩子讨论为什么高山草甸适合建风电场（风速大、地势开阔、无遮挡）。佛光是大气光学现象，需要阳光+云雾+特定角度才能看到，概率不高但值得期待。
+    </div>
+    <div class="callout warn">
+      <strong>保暖提醒</strong>
+      海拔2500m+早晚温度只有10-12°C，必须带抓绒衣或薄羽绒服。高原紫外线很强，即使多云也要涂防晒霜、戴帽子。草原上餐饮选择有限，建议在六盘水买好干粮带上来。
+    </div>
+  </article>
+
+  <!-- Day 5 -->
+  <article class="day-card" id="day5">
+    <div class="day-num">Day 5</div>
+    <h3>从草原到峡谷 · 马岭河</h3>
+    <span class="drive">🚗 乌蒙草原 → 兴义，约160km / 2.5h</span>
+    <ul class="timeline">
+      <li><strong>07:00</strong> — 草原日出（可选，6点左右）。清晨的草原有晨雾和露水，另一种美。</li>
+      <li><strong>09:00</strong> — 出发前往兴义。一路下坡，从2500m降到1200m，耳朵可能会有点堵（吞咽口水就好）。</li>
+      <li><strong>11:30</strong> — 抵达兴义，入住 <strong>兴义桔山广场碧云路亚朵酒店</strong>（2025年新开业，评分4.8）。午餐：<strong>兴义羊肉粉</strong> 或 <strong>鸡肉汤圆</strong>，人均¥20-30。</li>
+      <li><strong>13:30</strong> — <strong>马岭河峡谷</strong>（门票旺季¥70/人，学生免门票）。被称为"地球最美丽的伤痕"——地缝深切200-400米，谷底瀑布成群。7-8月丰水期，数十条瀑布从峡谷两侧飞泻而下，阳光照射时彩虹随处可见。全程步行约2-3小时。</li>
+      <li><strong>14:00</strong> — 精华段：天星画廊→万马奔腾瀑布群→钙华瀑布。建议买单程电梯票（¥30/人）下去，步行上来，省膝盖。</li>
+      <li><strong>16:30</strong> — 如果还有体力，去 <strong>峰林布依景区</strong>（距酒店约20min），看布依族村寨和田园风光。或者直接回酒店休息。</li>
+      <li><strong>18:30</strong> — 晚餐：<strong>兴义刷把头</strong> + <strong>邹记鸡肉汤圆</strong>，都是兴义独有的小吃，人均¥40。</li>
+    </ul>
+    <div class="tags">
+      <span class="tag food">兴义羊肉粉 ¥20</span>
+      <span class="tag food">鸡肉汤圆 ¥30</span>
+      <span class="tag photo">峡谷瀑布·彩虹</span>
+      <span class="tag edu">地缝·侵蚀地貌</span>
+      <span class="tag safety">台阶多·注意膝盖</span>
+    </div>
+    <div class="callout info">
+      <strong>研学知识点</strong>
+      马岭河峡谷是典型的喀斯特地缝——不是普通河流切割形成的V型谷，而是在地表以下暗河溶蚀+塌陷形成的箱型峡谷。峡谷两侧悬挂的钙华（石灰华）是溶解了碳酸钙的水渗出岩壁后重新沉积形成的，和钟乳石是同样的原理，只是方向反了。这里的钙华瀑布群规模是中国之最。
+    </div>
+  </article>
+
+  <!-- Day 6 -->
+  <article class="day-card" id="day6">
+    <div class="day-num">Day 6 · 🚫零驾驶日</div>
+    <h3>万峰林全天 · 喀斯特史诗</h3>
+    <span class="drive">🅿️ 酒店到景区约20min车程，之后全天电瓶车+骑行</span>
+    <ul class="timeline">
+      <li><strong>08:00</strong> — 早点出发，趁凉快。万峰林门票+观光车套票¥120/人（学生免门票只需¥50观光车）。坐观光车上山，在几个观景台俯瞰——数不清的圆锥形山峰从平地拔起，一直延伸到天边，布依族村寨散落在峰林间的稻田里。</li>
+      <li><strong>09:30</strong> — 观光车结束后，在景区门口 <strong>租一辆电动车或自行车</strong>（约¥30-50/天），穿行在峰林之间的乡间小路。这是万峰林最好的打开方式——风吹稻田、峰林倒影、布依族老人在树下乘凉，画面像田园诗。</li>
+      <li><strong>10:30</strong> — 骑到 <strong>八卦田</strong>——天然形成的漏斗状农田，从高处看像巨大的八卦图。旁边就是 <strong>纳灰村</strong>，在村里的大榕树下喝杯茶。</li>
+      <li><strong>12:00</strong> — 午餐：纳灰村农家乐，<strong>万峰林蛋炒饭</strong> 是当地一绝（¥15/份），配泡萝卜和酸菜，朴实好吃。</li>
+      <li><strong>14:00</strong> — 继续骑行到更远的村寨，或者找个稻田边的咖啡馆发呆。下午2-4点是最热的时候（也就28°C），可以回酒店游泳/休息。</li>
+      <li><strong>17:00</strong> — 傍晚再次出门，<strong>日落时分的万峰林最美</strong>——金色的阳光把山峰染成暖色调，稻田反射出碎金般的光。</li>
+      <li><strong>19:00</strong> — 晚餐：兴义市区 <strong>布依酸笋鱼</strong> 或 <strong>兴义狗肉粉</strong>（不吃的可以选牛肉火锅），人均¥60。</li>
+    </ul>
+    <div class="tags">
+      <span class="tag food">蛋炒饭 ¥15</span>
+      <span class="tag food">酸笋鱼 ¥60/人</span>
+      <span class="tag photo">八卦田·航拍视角</span>
+      <span class="tag photo">稻田骑行</span>
+      <span class="tag edu">喀斯特峰林·锥形地貌</span>
+    </div>
+    <div class="callout info">
+      <strong>研学知识点</strong>
+      万峰林是中国最大、最典型的锥状喀斯特峰林。和桂林的塔状峰林不同，这里的山峰呈完美的圆锥形，坡度约45-60°，像上帝用圆规画出来的。之所以这么规整，是因为这里的石灰岩层理水平且纯净，雨水均匀下渗溶蚀，形成了近似对称的锥形山体。八卦田是一个天然的喀斯特漏斗（天坑的雏形），地表水从这里汇入地下暗河。
+    </div>
+    <div class="callout tip">
+      <strong>小贴士</strong>
+      万峰林骑行是15岁孩子最可能喜欢的一天——自由、有风、能自己探索。租电动车不需要驾照（景区内的电瓶车限速20km/h），骑行路线平坦无坡，全程约15-20km。带瓶水、穿防晒衣、手机充满电拍照。
+    </div>
+  </article>
+
+  <!-- Day 7 -->
+  <article class="day-card" id="day7">
+    <div class="day-num">Day 7</div>
+    <h3>晴隆24道拐 · 红色研学 · 返回贵阳</h3>
+    <span class="drive">🚗 兴义 → 晴隆24道拐（约120km / 1.5h）→ 贵阳（约200km / 2.5h），合计约4h</span>
+    <ul class="timeline">
+      <li><strong>08:00</strong> — 早餐后出发，约9:30抵达<strong>晴隆24道拐</strong>（观景台门票约¥60/人）。这是抗战时期"史迪威公路"（滇缅公路延伸段）最标志性的一段——在垂直高度约260米的山坡上连续拐了24个急弯，从山顶盘旋而下。在观景台上俯瞰全景非常壮观。</li>
+      <li><strong>09:30</strong> — 参观 <strong>24道拐展览馆</strong>（含在门票内），了解抗战时期这条公路如何成为中国的"生命线"——国际援华物资通过滇缅公路→史迪威公路运到重庆。对15岁孩子来说是很好的历史研学素材。</li>
+      <li><strong>10:30</strong> — 如果感兴趣，可以自驾体验走一遍24道拐（免费开放公路）。方向盘不停地左右打，副驾的人会很刺激。不想开也可以只看不驾。</li>
+      <li><strong>11:30</strong> — 继续驱车往贵阳。午餐在高速服务区或途经的县城解决。</li>
+      <li><strong>14:00</strong> — 抵达贵阳，入住 <strong>贵阳喷水池延安西路地铁站亚朵酒店</strong>。还车前去洗车、加满油。</li>
+      <li><strong>15:00</strong> — 下午自由安排：逛街买伴手礼（<strong>但家香酥鸭</strong>、<strong>贵州辣椒</strong>、<strong>刺梨干</strong>都是好选择），或者去 <strong>黔灵山公园</strong>（¥5）和猕猴打个招呼。</li>
+      <li><strong>18:00</strong> — 最后一顿晚餐：<strong>南门口肠旺面</strong> 或 回访酸汤鱼，人均¥50。</li>
+    </ul>
+    <div class="tags">
+      <span class="tag photo">24道拐·全景</span>
+      <span class="tag edu">抗战史·史迪威公路</span>
+      <span class="tag food">肠旺面 ¥30</span>
+      <span class="tag safety">山路驾驶·慢行</span>
+    </div>
+    <div class="callout info">
+      <strong>研学知识点</strong>
+      晴隆24道拐建于1935年，1942年成为史迪威公路的关键节点。抗战期间，美国援华物资从缅甸仰光经滇缅公路运到昆明，再经24道拐运往重庆和前线。美国战地记者拍摄的24道拐照片曾登上《生活》杂志，成为二战中国战场的标志性画面。这段历史可以把地理（滇缅地形）、工程（山路设计）、历史（二战中国战场）串联起来。
+    </div>
+  </article>
+
+  <!-- Day 8 -->
+  <article class="day-card" id="day8">
+    <div class="day-num">Day 8</div>
+    <h3>返程 · 带一片凉意回家</h3>
+    <span class="drive">🚗 酒店 → 机场，约30min</span>
+    <ul class="timeline">
+      <li><strong>上午</strong> — 睡到自然醒。酒店早餐后收拾行李。如果航班是下午或傍晚，上午可以去 <strong>青岩古镇</strong>（¥10）快速逛一圈，吃个青岩猪脚。</li>
+      <li><strong>提前2h</strong> — 抵达机场，还车（加满油、拍还车照片）。安检、候机。</li>
+      <li><strong>贵阳 ✈ 福州</strong> — 带着19°C的凉意和一手机的照片，回家！</li>
+    </ul>
+    <div class="tags">
+      <span class="tag food">青岩猪脚 ¥60/人</span>
+    </div>
+    <div class="callout tip">
+      <strong>小贴士</strong>
+      还车前确认：满油、无新增刮痕、里程表拍照、车内无遗留物品。租车App上点"还车"后会生成电子确认单，留存备用。
+    </div>
+  </article>
+</section>
+
+<!-- ═══════════ 4. 费用预算 ═══════════ -->
+<section id="budget">
+  <h2>费用预算（3人合计）</h2>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>项目</th><th>明细</th><th>预估费用（元）</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="2">✈️ 往返机票</td><td>福州⇄贵阳 × 3人</td><td>4,200 – 5,400</td><td>暑假旺季，提前1个月订</td></tr>
+      <tr><td></td><td></td><td>关注航司会员日特价</td></tr>
+      <tr><td rowspan="3">🚗 租车</td><td>租车费（7天）</td><td>1,750 – 2,800</td><td>SUV ¥250-400/天</td></tr>
+      <tr><td>油费（~830km）</td><td>600 – 800</td><td>比东线少约70km</td></tr>
+      <tr><td>高速过路费</td><td>500 – 700</td><td>西线路段收费略低</td></tr>
+      <tr><td rowspan="2">🏨 住宿</td><td>7晚 × ¥350-500</td><td>2,450 – 3,500</td><td>3晚亚朵+1晚草原民宿</td></tr>
+      <tr><td></td><td></td><td>草原民宿¥300-500/晚</td></tr>
+      <tr><td rowspan="5">🎫 门票</td><td>织金洞 ¥140/人</td><td>420</td><td>含观光车+安全包</td></tr>
+      <tr><td>梅花山索道 ¥118/人</td><td>354</td><td>往返</td></tr>
+      <tr><td>乌蒙草原 ¥30/人</td><td>90</td><td>自驾车免费</td></tr>
+      <tr><td>马岭河+万峰林 ¥190/人</td><td>570</td><td>70+120</td></tr>
+      <tr><td>晴隆24道拐 ¥60/人</td><td>180</td><td>观景台+展览馆</td></tr>
+      <tr><td>🍜 餐饮</td><td>¥180/人/天 × 8天</td><td>4,320</td><td>含零食饮料</td></tr>
+      <tr><td>📦 其他</td><td>停车费、保险、纪念品</td><td>500 – 800</td><td>预留弹性空间</td></tr>
+      <tr style="font-weight:bold; color:var(--cool-accent);"><td>💰 合计</td><td></td><td>~16,000 – 20,000</td><td>人均约 ¥5,300 – 6,700</td></tr>
+      <tr><td colspan="4" style="color:var(--accent2); font-size:.82rem;">学生优惠：15岁凭身份证在织金洞、马岭河、万峰林<strong>免门票</strong>，门票实际支出可再降 ¥400-500</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="budget-legend">
+    <span><i style="background:#5b9bd5"></i> 机票 31%</span>
+    <span><i style="background:#ed7d31"></i> 住宿 18%</span>
+    <span><i style="background:#a5a5a5"></i> 租车+油费 18%</span>
+    <span><i style="background:#ffc000"></i> 门票 10%</span>
+    <span><i style="background:#70ad47"></i> 餐饮 23%</span>
+  </div>
+  <div class="budget-bar">
+    <div style="width:31%;background:#5b9bd5"></div>
+    <div style="width:18%;background:#ed7d31"></div>
+    <div style="width:18%;background:#a5a5a5"></div>
+    <div style="width:10%;background:#ffc000"></div>
+    <div style="width:23%;background:#70ad47"></div>
+  </div>
+
+  <div class="callout info" style="margin-top:12px;">
+    <strong>比东线便宜在哪？</strong>
+    门票总支出少约¥600（西线景点门票整体比东线热门景点便宜，而且少了梵净山¥140索道的大额支出）。
+    油价和过路费也因里程短而略低。整体比东线省约 ¥1,000-1,200。
+  </div>
+</section>
+
+<!-- ═══════════ 5. 实用贴士 ═══════════ -->
+<section id="tips">
+  <h2>实用贴士</h2>
+
+  <h3>装备清单（西线特别版）</h3>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px;">
+    <div style="background:var(--card);border-radius:8px;padding:12px;">
+      <h4 style="margin-top:0;">衣物类（温差大！）</h4>
+      <ul class="checklist">
+        <li>速干T恤 ×4-5件</li>
+        <li><strong>抓绒衣/薄羽绒服 ×1</strong>（乌蒙草原晚上10°C）</li>
+        <li>防晒衣（高原紫外线强）</li>
+        <li>运动鞋 + 凉鞋</li>
+        <li>雨衣（贵州必备）</li>
+        <li>遮阳帽 + 墨镜</li>
+      </ul>
+    </div>
+    <div style="background:var(--card);border-radius:8px;padding:12px;">
+      <h4 style="margin-top:0;">电子/证件</h4>
+      <ul class="checklist">
+        <li>身份证（3人）</li>
+        <li>驾照（租车用）</li>
+        <li>充电宝 ×2</li>
+        <li>车载手机支架</li>
+        <li>Type-C/Lightning线</li>
+        <li>相机（拍星空！）</li>
+      </ul>
+    </div>
+    <div style="background:var(--card);border-radius:8px;padding:12px;">
+      <h4 style="margin-top:0;">药品/防护</h4>
+      <ul class="checklist">
+        <li>防晒霜 SPF50+（高原必备）</li>
+        <li>驱蚊液</li>
+        <li>藿香正气水</li>
+        <li>创可贴 + 碘伏棉签</li>
+        <li>晕车药（24道拐可能晕）</li>
+        <li><strong>润唇膏</strong>（高原干燥）</li>
+      </ul>
+    </div>
+    <div style="background:var(--card);border-radius:8px;padding:12px;">
+      <h4 style="margin-top:0;">车上补给</h4>
+      <ul class="checklist">
+        <li>瓶装水 ×1箱</li>
+        <li>干粮：面包、火腿肠、坚果</li>
+        <li>口香糖（提神）</li>
+        <li>垃圾袋、湿纸巾</li>
+        <li>U型枕</li>
+        <li><strong>车载逆变器</strong>（充电更方便）</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>高海拔提醒</h3>
+  <div class="callout warn">
+    <strong>这条线路的海拔比东线高</strong>
+    <ul style="margin:8px 0 0 16px; font-size:.88rem;">
+      <li>贵阳 1100m / 织金洞 1300m / <strong>六盘水 1800m</strong> / <strong>乌蒙草原 2500-2857m</strong> / 兴义 1200m</li>
+      <li>2500m以上属于"中等海拔"，大多数人不会有高原反应，但可能轻微气短、易疲劳</li>
+      <li>在乌蒙草原不要剧烈奔跑、跳跃，走路放慢节奏</li>
+      <li>多喝水（高原空气干燥，呼吸失水比平原多）、少喝酒</li>
+      <li>如果感到头痛、恶心，立即下撤到低海拔区域（开车下到六盘水就会缓解）</li>
+    </ul>
+  </div>
+
+  <h3>山路驾驶安全</h3>
+  <div class="callout warn">
+    <strong>西线驾驶特点</strong>
+    <ul style="margin:8px 0 0 16px; font-size:.88rem;">
+      <li>高速隧道多，进隧道前减速、开大灯</li>
+      <li>乌蒙草原景区内山路弯多坡陡，低速慢行，会车时注意礼让</li>
+      <li>晴隆24道拐体验驾驶时，挂低挡、少踩刹车（防止刹车过热）</li>
+      <li>高原阳光刺眼，墨镜备在驾驶位</li>
+      <li>导航下载贵州离线地图，部分路段信号弱</li>
+    </ul>
+  </div>
+
+  <h3>紧急联系</h3>
+  <div style="background:var(--card);border-radius:8px;padding:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:8px; font-size:.9rem;">
+    <div>报警：<strong style="color:var(--accent2)">110</strong></div>
+    <div>急救：<strong style="color:var(--accent2)">120</strong></div>
+    <div>交通事故：<strong style="color:var(--accent2)">122</strong></div>
+    <div>高速救援：<strong style="color:var(--accent2)">12122</strong></div>
+    <div>旅游投诉：<strong style="color:var(--accent2)">12301</strong></div>
+  </div>
+
+  <h3>预订提醒</h3>
+  <ul style="padding-left:20px; color:var(--text-secondary);">
+    <li><strong>乌蒙草原自驾名额</strong>：每日限800辆车入园，提前在"乌蒙大草原"公众号预约（出发前2-3天即可，不需要像梵净山那样抢）。</li>
+    <li><strong>草原民宿</strong>：乌蒙草原上住宿选择有限（帐篷酒店、蒙古包、民宿），暑假建议提前1-2周预订。</li>
+    <li>全国大中小学生（含15岁）在贵州大部分景区<strong>免门票</strong>，带好身份证即可，无需学生证。</li>
+  </ul>
+</section>
+
+<!-- ═══════════ 6. 备选方案 ═══════════ -->
+<section id="alt">
+  <h2>备选方案 & 弹性调整</h2>
+
+  <h3>雨天替代景点</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>原计划</th><th>雨天替代</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td>乌蒙草原</td><td><strong>六盘水三线建设博物馆</strong>（免费）</td><td>室内，了解三线建设历史，内容丰富</td></tr>
+      <tr><td>万峰林骑行</td><td><strong>黔西南州博物馆</strong>（免费）</td><td>室内，夜郎文化+贵州龙化石</td></tr>
+      <tr><td>马岭河峡谷</td><td><strong>万峰林坐观光车</strong>（不骑行）</td><td>观光车有顶棚，小雨不影响</td></tr>
+      <tr><td>梅花山</td><td><strong>水城古镇+三线博物馆</strong></td><td>室内为主，不受天气影响</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>身体不适调整</h3>
+  <ul style="padding-left:20px;">
+    <li><strong>高原反应</strong>：乌蒙草原（2500m+）如果感觉不适，当天往返不住宿——六盘水到草原只要1.5h，完全可以一日游。</li>
+    <li><strong>肠胃不适</strong>：贵州菜偏酸辣油，肠胃不适应就找牛肉粉/羊肉粉店，清淡热汤最养胃。</li>
+    <li><strong>晴隆24道拐晕车</strong>：连续急弯容易晕，提前吃晕车药，或者跳过驾驶体验只去观景台看全景。</li>
+  </ul>
+
+  <h3>行程简化（如果不想太累）</h3>
+  <p style="color:var(--text-secondary);">
+    砍掉Day7晴隆24道拐（兴义直接回贵阳约4h），Day7在兴义多玩半天，下午回贵阳。这样最后两天更轻松。
+    或者砍掉Day5马岭河峡谷（如果对峡谷瀑布审美疲劳），Day5从乌蒙直接到兴义休息，Day6全天万峰林。
+  </p>
+</section>
+
+<!-- ═══════════ 7. 15岁青少年专属 ═══════════ -->
+<section>
+  <h2>给15岁少年的专属推荐</h2>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px;">
+    <div style="background:var(--card);border-radius:10px;padding:16px;border-top:3px solid var(--cool-accent);">
+      <h4 style="margin-top:0;">最出片打卡点</h4>
+      <ol style="padding-left:18px; font-size:.9rem; line-height:2;">
+        <li>织金洞·银雨树（17米高石笋）</li>
+        <li>万峰林·八卦田（航拍级视野）</li>
+        <li>乌蒙草原·风车阵+落日</li>
+        <li>乌蒙草原·夜晚星空（银河！）</li>
+        <li>马岭河·万马奔腾瀑布群+彩虹</li>
+        <li>梅花山索道·城市全景</li>
+        <li>晴隆24道拐·俯瞰盘山公路</li>
+      </ol>
+    </div>
+
+    <div style="background:var(--card);border-radius:10px;padding:16px;border-top:3px solid var(--accent2);">
+      <h4 style="margin-top:0;">最有趣的体验</h4>
+      <ol style="padding-left:18px; font-size:.9rem; line-height:2;">
+        <li>乌蒙草原骑马（¥50-80）</li>
+        <li>万峰林稻田骑行（自由探索）</li>
+        <li>织金洞地下探险（16°C避暑）</li>
+        <li>乌蒙草原看银河（无光污染）</li>
+        <li>晴隆24道拐自驾体验（刺激）</li>
+        <li>六盘水夜市逛吃（烙锅DIY）</li>
+      </ol>
+    </div>
+
+    <div style="background:var(--card);border-radius:10px;padding:16px;border-top:3px solid #b080e0;">
+      <h4 style="margin-top:0;">研学知识点速览</h4>
+      <ol style="padding-left:18px; font-size:.9rem; line-height:2;">
+        <li>织金洞=2.5亿年石灰岩溶蚀</li>
+        <li>万峰林=锥状喀斯特教科书</li>
+        <li>马岭河=喀斯特地缝+钙华沉积</li>
+        <li>乌蒙草原=高山草甸生态系统</li>
+        <li>24道拐=二战史迪威公路</li>
+        <li>六盘水=高原城市气候案例</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<footer>
+  <p>贵州避暑轻松自驾游攻略 · 2026年暑假 · 凉都西线</p>
+  <p style="color:var(--text-secondary); font-size:.75rem;">
+    19°C 的夏天 · 少排队 · 不赶路 · 看银河
+  </p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  var points = [
+    { name: '贵阳（起/终点）', sub: 'Day1/8 · 取车/还车', lat: 26.647, lng: 106.630, color: '#ff6b6b' },
+    { name: '织金洞', sub: 'Day2 · 中国溶洞之王', lat: 26.750, lng: 105.880, color: '#ffc000' },
+    { name: '六盘水', sub: 'Day2-3 · 中国凉都 19°C', lat: 26.592, lng: 104.830, color: '#64b5f6' },
+    { name: '乌蒙大草原', sub: 'Day4 · 海拔2500m·高山草甸', lat: 26.050, lng: 104.600, color: '#4fc3a8' },
+    { name: '兴义', sub: 'Day5-6 · 万峰林+马岭河', lat: 25.092, lng: 104.895, color: '#c084fc' },
+    { name: '晴隆24道拐', sub: 'Day7 · 史迪威公路', lat: 25.830, lng: 105.220, color: '#f0a060' }
+  ];
+
+  var routes = [
+    [[26.647,106.630],[26.75,105.88]], // 贵阳→织金
+    [[26.75,105.88],[26.592,104.83]],  // 织金→六盘水
+    [[26.592,104.83],[26.05,104.60]],  // 六盘水→乌蒙
+    [[26.05,104.60],[25.092,104.895]], // 乌蒙→兴义
+    [[25.092,104.895],[25.83,105.22],[26.647,106.630]] // 兴义→晴隆→贵阳
+  ];
+
+  var map = L.map('routeMap', {
+    center: [26.0, 105.2],
+    zoom: 7,
+    zoomControl: true,
+    attributionControl: false
+  });
+
+  L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+    subdomains: ['1','2','3','4'],
+    maxZoom: 18,
+    minZoom: 6
+  }).addTo(map);
+
+  routes.forEach(function(seg) {
+    L.polyline(seg, {
+      color: '#64b5f6',
+      weight: 3.5,
+      opacity: 0.7,
+      dashArray: '8,6',
+      lineJoin: 'round'
+    }).addTo(map);
+  });
+
+  points.forEach(function(p, i) {
+    if (i === points.length - 1 && p.name.includes('晴隆')) {
+      var m = L.circleMarker([p.lat, p.lng], {
+        radius: 8, fillColor: p.color, color: '#fff', weight: 2.5, fillOpacity: 0.95
+      }).addTo(map);
+      m.bindPopup('<strong>' + p.name + '</strong><br><span style="color:#9898b0">' + p.sub + '</span>');
+      return;
+    }
+    if (p.name.includes('贵阳')) return; // skip duplicate Guiyang
+    var m = L.circleMarker([p.lat, p.lng], {
+      radius: 8, fillColor: p.color, color: '#fff', weight: 2.5, fillOpacity: 0.95
+    }).addTo(map);
+    m.bindPopup('<strong>' + p.name + '</strong><br><span style="color:#9898b0">' + p.sub + '</span>');
+  });
+
+  // Airport
+  var airportIcon = L.divIcon({
+    className: '',
+    html: '<div style="background:#ff6b6b;color:#fff;width:22px;height:22px;border-radius:50%;text-align:center;line-height:22px;font-size:11px;font-weight:bold;border:2px solid #fff;box-shadow:0 0 6px rgba(255,107,107,.5)">✈</div>',
+    iconSize: [22, 22],
+    iconAnchor: [11, 11]
+  });
+  L.marker([26.538, 106.801], {icon: airportIcon})
+    .bindPopup('<strong>贵阳龙洞堡机场</strong><br><span style="color:#9898b0">取车/还车 · 福州往返</span>')
+    .addTo(map);
+
+  // Start/end marker for Guiyang
+  var startEndIcon = L.divIcon({
+    className: '',
+    html: '<div style="background:#ff6b6b;color:#fff;width:20px;height:20px;border-radius:50%;text-align:center;line-height:20px;font-size:10px;font-weight:bold;border:2px solid #fff">1</div>',
+    iconSize: [20, 20],
+    iconAnchor: [10, 10]
+  });
+  L.marker([26.647, 106.630], {icon: startEndIcon})
+    .bindPopup('<strong>贵阳（起/终点）</strong><br><span style="color:#9898b0">Day1 取车 · Day8 还车</span>')
+    .addTo(map);
+
+  map.fitBounds([
+    [25.00, 104.50],
+    [27.00, 106.80]
+  ], {padding: [30, 30]});
+})();
+</script>
+
+</body>
+</html>

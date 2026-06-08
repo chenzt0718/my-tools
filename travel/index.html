@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>贵州自驾游攻略</title>
+<style>
+  :root {
+    --bg: #1a1b2e;
+    --card: #252740;
+    --accent: #4fc3a8;
+    --text: #d0d0dc;
+    --text-secondary: #9898b0;
+    --border: #353855;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  h1 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+  }
+  .cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 700px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    width: 300px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .card h2 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .card p {
+    font-size: .88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .card .tag {
+    display: inline-block;
+    font-size: .76rem;
+    background: rgba(79, 195, 168, 0.15);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-top: 12px;
+  }
+  footer {
+    margin-top: 48px;
+    color: #555;
+    font-size: .78rem;
+  }
+</style>
+</head>
+<body>
+  <h1>🚗 贵州自驾游攻略</h1>
+  <p class="subtitle">2026年暑假 · 福州出发 · 8天7晚</p>
+
+  <div class="cards">
+    <a href="贵州自驾游攻略.html" class="card">
+      <h2>经典环线版</h2>
+      <p>贵阳 → 黄果树 → 荔波 → 西江苗寨 → 梵净山<br>逆时针环线，不走回头路，全程约900km</p>
+      <span class="tag">经典路线</span>
+    </a>
+    <a href="贵州避暑轻松自驾游攻略.html" class="card">
+      <h2>避暑轻松版</h2>
+      <p>凉都西线 · 更凉爽的夏季选择<br>同样的贵州，更轻松的节奏</p>
+      <span class="tag">避暑优选</span>
+    </a>
+  </div>
+
+  <footer>
+    <p>Chen's Travel Guide · 贵州 · 2026</p>
+  </footer>
+</body>
+</html>

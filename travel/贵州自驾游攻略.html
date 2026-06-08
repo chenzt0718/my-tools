@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>贵州暑假自驾游攻略 · 8天7晚</title>
+<style>
+  :root {
+    --bg: #1a1b2e;
+    --card: #252740;
+    --accent: #4fc3a8;
+    --accent2: #f0a060;
+    --text: #d0d0dc;
+    --text-secondary: #9898b0;
+    --border: #353855;
+    --tag-bg: #2d2f50;
+    --warning-bg: #3d3020;
+    --warning-text: #f0c060;
+    --info-bg: #203040;
+    --info-text: #60b0d0;
+    --danger-bg: #3d2028;
+    --danger-text: #e08090;
+    --success-bg: #203830;
+    --success-text: #60c090;
+    --header-bg: #1e2038;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 0;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* ── Header ── */
+  .hero {
+    background: linear-gradient(135deg, #1a3a2a 0%, #1a2b3a 50%, #2a1a3a 100%);
+    padding: 48px 24px 40px;
+    text-align: center;
+    border-bottom: 3px solid var(--accent);
+  }
+  .hero h1 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    color: var(--accent);
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+  }
+  .hero .meta {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .hero .meta span {
+    background: var(--tag-bg);
+    color: var(--text-secondary);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: .9rem;
+  }
+
+  /* ── Navigation ── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+  .nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: .82rem;
+    padding: 4px 12px;
+    border-radius: 14px;
+    white-space: nowrap;
+    transition: .15s;
+  }
+  .nav a:hover, .nav a:focus { background: var(--accent); color: #000; }
+
+  /* ── Sections ── */
+  .container { padding: 24px 20px 48px; }
+  section { margin-bottom: 40px; }
+  h2 {
+    font-size: 1.5rem;
+    color: #fff;
+    border-left: 3px solid var(--accent);
+    padding-left: 12px;
+    margin-bottom: 16px;
+  }
+  h3 {
+    font-size: 1.15rem;
+    color: var(--accent2);
+    margin: 20px 0 8px;
+  }
+  h4 {
+    font-size: 1rem;
+    color: #ccc;
+    margin: 12px 0 6px;
+  }
+
+  /* ── Tables ── */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    font-size: .88rem;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    background: var(--tag-bg);
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,.02); }
+
+  /* ── Day Cards ── */
+  .day-card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 20px 20px 16px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent);
+  }
+  .day-card .day-num {
+    font-size: .78rem;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .day-card h3 {
+    margin-top: 2px;
+    font-size: 1.25rem;
+  }
+  .day-card .drive {
+    display: inline-block;
+    font-size: .82rem;
+    background: var(--tag-bg);
+    color: var(--accent2);
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+  .timeline {
+    margin: 12px 0;
+    padding-left: 0;
+    list-style: none;
+  }
+  .timeline li {
+    padding: 6px 0 6px 28px;
+    position: relative;
+    border-left: 1px solid var(--border);
+    margin-left: 8px;
+  }
+  .timeline li::before {
+    content: '';
+    position: absolute;
+    left: -5px; top: 12px;
+    width: 9px; height: 9px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  /* ── Callout Boxes ── */
+  .callout {
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: .88rem;
+  }
+  .callout.tip    { background: var(--success-bg); color: var(--success-text); }
+  .callout.warn   { background: var(--warning-bg); color: var(--warning-text); }
+  .callout.info   { background: var(--info-bg);    color: var(--info-text); }
+  .callout.danger { background: var(--danger-bg);  color: var(--danger-text); }
+  .callout strong { display: block; margin-bottom: 2px; font-size: .9rem; }
+
+  /* ── Tags ── */
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+  .tag {
+    font-size: .76rem;
+    padding: 3px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .tag.food   { background: #3d3020; color: #f0a060; }
+  .tag.photo  { background: #302040; color: #b080e0; }
+  .tag.edu    { background: #203830; color: #60c090; }
+  .tag.safety { background: #3d2028; color: #e08090; }
+
+  /* ── Budget ── */
+  .budget-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 8px 0 4px;
+  }
+  .budget-bar div { height: 100%; }
+  .budget-legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: .8rem; margin-bottom: 12px; }
+  .budget-legend span { display: flex; align-items: center; gap: 4px; }
+  .budget-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
+
+  /* ── Checklist ── */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { padding: 4px 0 4px 22px; position: relative; }
+  .checklist li::before { content: '☐'; position: absolute; left: 0; color: var(--text-secondary); }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-secondary);
+    font-size: .8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    body { font-size: .94rem; }
+    .hero { padding: 32px 16px 28px; }
+    .container { padding: 16px 12px 32px; }
+    .day-card { padding: 14px 12px 12px; }
+    th, td { padding: 8px; font-size: .8rem; }
+    .nav a { font-size: .74rem; padding: 3px 8px; }
+  }
+
+  /* ── Map ── */
+  .map-section { margin: 16px 0 24px; }
+  .map-container {
+    width: 100%; height: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #1a1b2e;
+    z-index: 1;
+  }
+  .leaflet-control-zoom a { background: var(--card) !important; color: var(--text) !important; border-color: var(--border) !important; }
+  .leaflet-control-attribution { background: rgba(26,27,46,.85) !important; color: #555 !important; font-size: .65rem !important; }
+  .map-legend {
+    display: flex; flex-wrap: wrap; gap: 16px; margin-top: 10px;
+    font-size: .8rem; color: var(--text-secondary);
+  }
+  .map-legend .dot {
+    width: 10px; height: 10px; border-radius: 50%; display: inline-block;
+    margin-right: 5px; vertical-align: middle;
+  }
+  .leaflet-popup-content-wrapper { background: var(--card) !important; color: var(--text) !important; border-radius: 8px !important; border: 1px solid var(--border) !important; }
+  .leaflet-popup-tip { background: var(--card) !important; }
+  .leaflet-popup-content { font-family: inherit !important; font-size: .85rem !important; margin: 8px 12px !important; }
+  .leaflet-popup-content strong { color: var(--accent); }
+  .leaflet-container { background: #1a1b2e !important; }
+  @media (max-width: 600px) { .map-container { height: 300px; } }
+
+  @media print {
+    body { background: #fff; color: #222; }
+    .nav { display: none; }
+    .day-card, .callout { break-inside: avoid; }
+    .day-card { background: #f8f8f8; border-left-color: #333; }
+    h2 { color: #111; }
+  }
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero">
+  <h1>贵州暑假自驾游攻略</h1>
+  <p class="sub">贵阳 ⇢ 黄果树 ⇢ 荔波 ⇢ 西江 ⇢ 梵净山</p>
+  <div class="meta">
+    <span>8天7晚</span>
+    <span>3人家庭</span>
+    <span>自驾环线</span>
+    <span>7-8月暑假</span>
+  </div>
+</header>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="nav">
+  <a href="#overview">行程总览</a>
+  <a href="#day1">Day1·贵阳</a>
+  <a href="#day2">Day2·黄果树</a>
+  <a href="#day3">Day3·赴荔波</a>
+  <a href="#day4">Day4·小七孔</a>
+  <a href="#day5">Day5·苗寨</a>
+  <a href="#day6">Day6·赴梵净山</a>
+  <a href="#day7">Day7·梵净山</a>
+  <a href="#day8">Day8·返程</a>
+  <a href="#budget">费用预算</a>
+  <a href="#tips">实用贴士</a>
+  <a href="#alt">备选方案</a>
+</nav>
+
+<div class="container">
+
+<!-- ═══════════ 1. 行程总览 ═══════════ -->
+<section id="overview">
+  <h2>行程总览</h2>
+  <p style="color:var(--text-secondary); margin-bottom:12px;">逆时针环线，不走回头路。每天车程控制在 <strong style="color:var(--accent2)">4小时内</strong>，游览节奏适中，适合家庭出行。</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>日期</th><th>行程</th><th>车程</th><th>亮点</th><th>住宿</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Day 1</td><td>福州 ✈ 贵阳，取车，市区游览</td><td>—</td><td>黔灵山、甲秀楼</td><td>贵阳·亚朵</td></tr>
+      <tr><td>Day 2</td><td>贵阳 → 黄果树瀑布</td><td>约2h</td><td>亚洲第一大瀑布</td><td>安顺/黄果树</td></tr>
+      <tr><td>Day 3</td><td>安顺 → 荔波</td><td>约4h</td><td>沿途喀斯特风光</td><td>荔波县城</td></tr>
+      <tr><td>Day 4</td><td>小七孔 + 大七孔 全天</td><td>—</td><td>水上森林、卧龙潭</td><td>荔波县城</td></tr>
+      <tr><td>Day 5</td><td>荔波 → 西江千户苗寨</td><td>约3.5h</td><td>万家灯火夜景</td><td>西江/凯里</td></tr>
+      <tr><td>Day 6</td><td>西江 → 梵净山（江口县）</td><td>约4h</td><td>清晨苗寨、沿途山水</td><td>江口县城</td></tr>
+      <tr><td>Day 7</td><td>梵净山 全天</td><td>—</td><td>红云金顶、蘑菇石</td><td>江口县城</td></tr>
+      <tr><td>Day 8</td><td>梵净山 → 贵阳 ✈ 福州</td><td>约4h</td><td>省博物馆 / 返程</td><td>—</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- 互动路线地图 -->
+  <div class="map-section">
+    <div id="routeMap" class="map-container"></div>
+    <div class="map-legend">
+      <span><span class="dot" style="background:#ff6b6b"></span> 起点·贵阳</span>
+      <span><span class="dot" style="background:#4fc3a8"></span> 黄果树</span>
+      <span><span class="dot" style="background:#4da6ff"></span> 荔波小七孔</span>
+      <span><span class="dot" style="background:#f0a060"></span> 西江苗寨</span>
+      <span><span class="dot" style="background:#c084fc"></span> 梵净山</span>
+      <span style="color:var(--text-secondary)">── 自驾路线（约900km环线）</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 2. 每日详细安排 ═══════════ -->
+
+<section>
+  <h2>每日详细安排</h2>
+
+  <!-- ─── Day 1 ─── -->
+  <article class="day-card" id="day1">
+    <div class="day-num">Day 1</div>
+    <h3>抵达贵阳 · 初识林城</h3>
+    <span class="drive">🚗 机场取车，市区自驾约30min</span>
+
+    <ul class="timeline">
+      <li><strong>上午</strong> — 福州长乐机场出发，飞行约2h15min抵达贵阳龙洞堡机场。机场内取车（提前App预订：神州/一嗨），检查车况、记录里程、拍视频留证。</li>
+      <li><strong>12:30</strong> — 入住酒店，放行李。推荐 <strong>贵阳喷水池延安西路地铁站亚朵酒店</strong>（2025年新开业，设施新，近黔灵山）或 <strong>贵阳云岩喷水池地铁站亚朵轻居酒店</strong>，市中心出行方便。</li>
+      <li><strong>13:30</strong> — 午餐：<strong>老凯俚酸汤鱼</strong>（省府路店），贵阳名片级美食，人均¥80。</li>
+      <li><strong>15:00</strong> — <strong>黔灵山公园</strong>（门票¥5），看野生猕猴、弘福寺祈福、黔灵湖散步。山上温度比市区低3-5℃，很适合夏日午后。游玩约2.5h。</li>
+      <li><strong>18:00</strong> — <strong>甲秀楼</strong>，贵阳地标，南明河畔傍晚最美。对岸拍甲秀楼倒影是经典机位。</li>
+      <li><strong>19:00</strong> — 晚餐：<strong>南门口肠旺面</strong> 或 <strong>丝恋丝娃娃</strong>，贵州小吃人均¥30-50。</li>
+      <li><strong>晚上</strong> — 青云路步行街闲逛，买些路上零食和水。早休息，明天开始正式行程。</li>
+    </ul>
+
+    <div class="tags">
+      <span class="tag food">酸汤鱼 ¥80/人</span>
+      <span class="tag food">肠旺面 ¥30/人</span>
+      <span class="tag photo">甲秀楼夜景</span>
+      <span class="tag edu">黔灵山猕猴观察</span>
+    </div>
+
+    <div class="callout tip">
+      <strong>小贴士</strong>
+      黔灵山的猴子会抢食物和饮料，不要手提塑料袋或拿食物在手上。15岁孩子会觉得喂猴子很有趣，但注意安全距离。
+    </div>
+  </article>
+
+  <!-- ─── Day 2 ─── -->
+  <article class="day-card" id="day2">
+    <div class="day-num">Day 2</div>
+    <h3>黄果树瀑布 · 亚洲之最</h3>
+    <span class="drive">🚗 贵阳 → 黄果树，约130km / 2h，G60沪昆高速</span>
+
+    <ul class="timeline">
+      <li><strong>07:00</strong> — 酒店早餐后出发，约9点抵达黄果树景区。提前在"黄果树景区"微信公众号购票（旺季¥160+¥50观光车=¥210/人，学生凭证免门票只需¥50观光车）。</li>
+      <li><strong>09:15</strong> — 推荐的游览顺序（避开人流）：<strong>天星桥</strong>（后半段精华：银链坠潭瀑布、天星洞）→ <strong>大瀑布</strong>（水帘洞体验）→ <strong>陡坡塘</strong>（西游记片尾取景地）。全程约5-6小时。</li>
+      <li><strong>12:00</strong> — 景区内简单午餐（自带干粮或景区餐厅，价格偏高）。</li>
+      <li><strong>14:30</strong> — 穿过水帘洞是必体验项目！穿雨衣或速干衣，手机套防水袋。7-8月水量充沛，瀑布气势最壮观。</li>
+      <li><strong>16:00</strong> — 出景区，驱车前往安顺市区（约40min）。</li>
+      <li><strong>17:30</strong> — 入住 <strong>安顺古城虹山湖路亚朵酒店</strong>（2025年新开业，虹山湖湖景，安顺高档酒店排名第1；备选：安顺百灵希尔顿逸林酒店）。</li>
+      <li><strong>18:30</strong> — 晚餐：安顺 <strong>顾府街夜市</strong>——夺夺粉、安顺裹卷、烙锅，贵州最被低估的美食之城！人均¥50吃撑。</li>
+    </ul>
+
+    <div class="tags">
+      <span class="tag food">安顺裹卷 ¥10/份</span>
+      <span class="tag food">夺夺粉 ¥50/人</span>
+      <span class="tag photo">水帘洞内向外拍</span>
+      <span class="tag edu">喀斯特地貌·瀑布成因</span>
+      <span class="tag safety">水帘洞湿滑小心</span>
+    </div>
+
+    <div class="callout info">
+      <strong>研学知识点（给15岁孩子）</strong>
+      黄果树瀑布属喀斯特侵蚀裂点型瀑布。白水河在这里遇到断层，河水从77.8米高处倾泻而下。可以观察瀑布后方水帘洞——这是世界罕见的"可穿越瀑布"，理解水蚀作用和石灰岩地质。
+    </div>
+    <div class="callout warn">
+      <strong>避坑指南</strong>
+      黄果树景区很大，三个景点之间必须坐观光车。不要试图步行！天星桥前半段（数生步）比较普通，如果体力有限可以跳过直接从后半段开始。景区门口的"免费导游"基本都是推销，礼貌拒绝。
+    </div>
+  </article>
+
+  <!-- ─── Day 3 ─── -->
+  <article class="day-card" id="day3">
+    <div class="day-num">Day 3</div>
+    <h3>穿越贵州 · 安顺到荔波</h3>
+    <span class="drive">🚗 安顺 → 荔波，约350km / 4.5-5h，经G60沪昆高速+兰海高速，含休息约5-6h</span>
+
+    <ul class="timeline">
+      <li><strong>08:00</strong> — 睡到自然醒，酒店早餐。今天主要在路上，不用赶早。</li>
+      <li><strong>09:00</strong> — 出发。沿途经过黔南布依族苗族自治州，高速两旁喀斯特峰林连绵，本身就是风景。中途在服务区休息1-2次。</li>
+      <li><strong>09:30</strong> — 备选顺路景点：<strong>龙宫风景区</strong>（安顺出发约40min，如果昨天没看够溶洞可以顺路去，游览约1.5h）。不想多走就直接赶路。</li>
+      <li><strong>13:00</strong> — 抵达荔波县城，入住酒店。推荐 <strong>荔波澳门大酒店（荔波古镇店）</strong>（评分4.6，免费停车，公交直达景区）或 <strong>荔波古镇荔江客栈</strong>（评分4.8，性价比高），房间确认有空调。</li>
+      <li><strong>13:30</strong> — 午餐：县城吃顿地道的 <strong>荔波牛肉粉</strong>，人均¥20。</li>
+      <li><strong>15:00</strong> — 下午休息，可以在酒店游泳/休息，或者在 <strong>荔波古镇</strong> 随便逛逛（免费，适合散步）。</li>
+      <li><strong>18:00</strong> — 晚餐：<strong>荔波石锅鱼</strong>，人均¥60。早点休息，明天小七孔需要体力。</li>
+    </ul>
+
+    <div class="tags">
+      <span class="tag food">荔波牛肉粉 ¥20</span>
+      <span class="tag food">石锅鱼 ¥60/人</span>
+      <span class="tag safety">长途高速·每1.5h休息</span>
+    </div>
+
+    <div class="callout warn">
+      <strong>驾驶提醒</strong>
+      贵州高速多隧道和弯道，限速变化频繁（80-110km/h交替）。打开导航的限速提醒！部分隧道内光线暗，提前开大灯。今天是全程最长的一段驾驶，保持耐心、不急不躁。
+    </div>
+  </article>
+
+  <!-- ─── Day 4 ─── -->
+  <article class="day-card" id="day4">
+    <div class="day-num">Day 4</div>
+    <h3>荔波小七孔 · 地球腰带上的绿宝石</h3>
+    <span class="drive">🚗 县城 → 景区，约30min</span>
+
+    <ul class="timeline">
+      <li><strong>07:00</strong> — 早起！暑期小七孔人非常多，赶在开门（8:00）前到达。提前在"荔波小七孔售票官网"公众号购票（旺季¥120+¥40观光车=¥160/人，学生凭证免门票只需¥40观光车，门票2日有效）。</li>
+      <li><strong>08:00</strong> — 推荐路线（<strong>西进东出</strong>，一路下坡最省力）：<strong>卧龙潭</strong>（西门进，海拔高）→（封面级机位，碧蓝水面）→ 鸳鸯湖（划船¥30/人，推荐！水上迷宫很有趣）→ 翠谷瀑布 → <strong>水上森林</strong>（走在溪水中，夏天最爽的一段）→ 68级跌水瀑布 → 拉雅瀑布 → <strong>小七孔古桥</strong>。全程约5-6小时。</li>
+      <li><strong>12:00</strong> — 景区内简餐或自带干粮。</li>
+      <li><strong>14:00</strong> — 体力够的话去 <strong>大七孔</strong>（门票已含，约1.5h），天生桥很壮观，步行平缓不累。</li>
+      <li><strong>16:00</strong> — 回酒店休息。</li>
+      <li><strong>18:30</strong> — 晚餐：荔波 <strong>瑶山鸡</strong> 或再吃一顿石锅鱼，人均¥60。</li>
+    </ul>
+
+    <div class="tags">
+      <span class="tag photo">卧龙潭·封面机位</span>
+      <span class="tag photo">小七孔古桥</span>
+      <span class="tag edu">喀斯特森林生态系统</span>
+      <span class="tag edu">水上森林·水循环</span>
+    </div>
+
+    <div class="callout tip">
+      <strong>小贴士</strong>
+      穿可以踩水的凉鞋或洞洞鞋！水上森林段需要蹚水，溪水冰凉解暑。带一套备用衣服放车上。鸳鸯湖划船强烈推荐——铁皮船穿过水上迷宫，15岁孩子会很喜欢，而且不社恐因为是自己家人一条船。
+    </div>
+    <div class="callout info">
+      <strong>研学知识点</strong>
+      小七孔是典型的喀斯特森林生态系统。这里的"水上森林"是岩溶地区的独特景观——树木直接长在河床岩石上，根系扎入石灰岩缝隙。卧龙潭的水色来自水中钙镁离子对光线的散射，和九寨沟原理类似。
+    </div>
+  </article>
+
+  <!-- ─── Day 5 ─── -->
+  <article class="day-card" id="day5">
+    <div class="day-num">Day 5</div>
+    <h3>从绿宝石到苗疆 · 西江千户苗寨</h3>
+    <span class="drive">🚗 荔波 → 西江，约210km / 3.5h，经S73三荔高速+G76</span>
+
+    <ul class="timeline">
+      <li><strong>08:00</strong> — 早餐后出发，约11:30抵达西江千户苗寨。提前公众号购票（旺季¥90+¥20观光车=¥110）。学生凭证免门票，只需买观光车票。车停在景区外停车场（收费约¥30/天）。</li>
+      <li><strong>12:00</strong> — 入住。苗寨内住宿推荐：<strong>西江三春里·孟度假酒店</strong>（无边泳池看苗寨，黑松露奖得主，评分4.8）或 <strong>西江想宿轻奢民宿（观景台店）</strong>（网红露台，评分4.7）。苗寨内没有亚朵，选评分4.5+的民宿即可，注意确认有空调。</li>
+      <li><strong>12:30</strong> — 午餐：<strong>长桌宴</strong>体验（很多餐厅提供，人均¥60-80）。苗家阿妹会唱敬酒歌——高山流水，可以礼貌婉拒。</li>
+      <li><strong>14:00</strong> — 下午逛苗寨：<strong>噶歌古巷</strong>（非遗体验：蜡染、苗绣、银饰制作）→ 田园风光区（梯田拍照）→ 步行上山到观景台。苗寨里随便走，每条巷子都出片。</li>
+      <li><strong>17:00</strong> — <strong>观景台</strong>：黄昏时分上去，看夕阳把吊脚楼染成金色。天黑后万家灯火亮起，是西江最经典的画面。</li>
+      <li><strong>19:00</strong> — 晚餐：苗寨内餐厅，<strong>酸汤牛肉</strong> 或 <strong>腊肉炒折耳根</strong>，人均¥70。</li>
+    </ul>
+
+    <div class="tags">
+      <span class="tag food">长桌宴 ¥70/人</span>
+      <span class="tag food">酸汤牛肉 ¥70/人</span>
+      <span class="tag photo">观景台万家灯火</span>
+      <span class="tag photo">5号风雨桥·梯田</span>
+      <span class="tag edu">苗族建筑·吊脚楼</span>
+      <span class="tag edu">非遗·蜡染工艺</span>
+    </div>
+
+    <div class="callout tip">
+      <strong>小贴士</strong>
+      苗寨里行李需要自己拖或请人搬运（石板路+台阶，行李箱轮子受罪）。建议只带一晚的必需品进寨，大行李箱留车上。住半山腰风景好但爬台阶多，住山脚方便但有噪音，根据体力选择。
+    </div>
+    <div class="callout info">
+      <strong>研学知识点</strong>
+      西江千户苗寨是世界上最大的苗族聚居村寨，有1400多户、6000余人。吊脚楼是苗族适应山地地形的智慧——半干栏式建筑，底层架空防潮防虫，上层住人通风好。可以和孩子一起观察吊脚楼的榫卯结构和就地取材的建造方式。
+    </div>
+  </article>
+
+  <!-- ─── Day 6 ─── -->
+  <article class="day-card" id="day6">
+    <div class="day-num">Day 6</div>
+    <h3>苗寨晨光 → 梵净山脚下</h3>
+    <span class="drive">🚗 西江 → 梵净山（江口县），约250km / 4h</span>
+
+    <ul class="timeline">
+      <li><strong>07:30</strong> — 清晨的苗寨最安静，再逛一圈，拍晨雾中的吊脚楼。早餐：苗寨里的 <strong>牛肉粉</strong> 或糯米饭。</li>
+      <li><strong>09:00</strong> — 出发前往梵净山。沿途经过黔东南→铜仁地区，风景从喀斯特峰林变为武陵山区风貌。</li>
+      <li><strong>11:00</strong> — 途中午餐：<strong>凯里</strong> 在西江南面约35km（去梵净山是东北方向），进市区会绕路约40分钟。如果想吃正宗 <strong>凯里酸汤鱼</strong>（人均¥70）值得绕一下；赶时间就在高速服务区解决，或到 <strong>石阡</strong> 县城吃午饭。</li>
+      <li><strong>13:30</strong> — 抵达江口县城，入住酒店。推荐 <strong>梵净山博锐度假酒店</strong>（五星级，距景区约2km，评分4.6）或 <strong>梵净山栖溪度假酒店</strong>（步行5分钟到山门，评分4.6）。江口暂无亚朵。</li>
+      <li><strong>14:30</strong> — 下午休息为主——游泳、午睡、江口县城逛逛。<strong>关键任务</strong>：确认明天梵净山门票！</li>
+      <li><strong>17:00</strong> — 可以在酒店附近散步，或者去 <strong>云舍古村</strong>（免费，距江口县城15min车程），安静的土家族村落，小溪穿村而过。</li>
+      <li><strong>18:30</strong> — 晚餐：江口 <strong>豆花烤鱼</strong> 或 <strong>铜仁米豆腐</strong>，人均¥50。早休息！明天需要早起+爬山。</li>
+    </ul>
+
+    <div class="tags">
+      <span class="tag food">凯里酸汤鱼 ¥70/人</span>
+      <span class="tag food">豆花烤鱼 ¥50/人</span>
+      <span class="tag photo">云舍古村·土家族</span>
+      <span class="tag safety">确认梵净山门票！</span>
+    </div>
+
+    <div class="callout danger">
+      <strong>重要！梵净山门票预约</strong>
+      梵净山每天限流约<strong>9000人</strong>（线上约6300张），暑期门票极其抢手。<strong>至少提前3天</strong>在"梵净山景区"微信公众号预约！选择"东山门（江口方向）"入园。预约时段建议选 <strong>8:00-9:00</strong> 这个时间段。如果没有预约到门票，请看下方"备选方案"。
+    </div>
+  </article>
+
+  <!-- ─── Day 7 ─── -->
+  <article class="day-card" id="day7">
+    <div class="day-num">Day 7</div>
+    <h3>梵净山 · 天空之城</h3>
+    <span class="drive">🚗 酒店 → 景区入口，约20min</span>
+
+    <ul class="timeline">
+      <li><strong>06:30</strong> — 早起！到景区门口排队。带好身份证、穿运动鞋、背轻便背包（水+干粮+雨衣+薄外套）。山上温度约15-20℃，比山下低8-10℃。</li>
+      <li><strong>08:00</strong> — 入园 → 观光车（约20min，东线往返¥48/人）→ <strong>索道缆车</strong>（约20min，往返¥140/人，海拔抬升约1200m，沿途壮观）。缆车下来后徒步登山约40min-1h到山顶。</li>
+      <li><strong>09:30</strong> — <strong>蘑菇石</strong>：梵净山标志，10亿年风化形成的地质奇观。拍照后继续上行。</li>
+      <li><strong>10:30</strong> — <strong>红云金顶</strong>（核心体验！）：90°垂直岩壁攀爬，手脚并用，铁链扶手。对15岁孩子来说是绝佳的体能挑战！登顶后俯瞰云海，天气好能看到方圆百里的武陵山脉。但——如果下雨或排队太长（有时要排1-2h），果断跳过。</li>
+      <li><strong>12:00</strong> — 山顶简餐（自带面包、火腿肠，山上东西贵且不好吃）。</li>
+      <li><strong>13:00</strong> — <strong>老金顶</strong>（可选）：体力够的话再去，比红云金顶缓和。或者直接缆车下山。</li>
+      <li><strong>14:30</strong> — 下山回酒店，好好休息。今天体力消耗大。</li>
+      <li><strong>18:00</strong> — 晚餐：江口县城犒劳一顿，可以试试 <strong>铜仁锅巴粉</strong> 或找家干净的川菜馆，人均¥50。</li>
+    </ul>
+
+    <div class="tags">
+      <span class="tag photo">蘑菇石·标志性</span>
+      <span class="tag photo">红云金顶·云端</span>
+      <span class="tag edu">10亿年变质岩地质</span>
+      <span class="tag edu">武陵山脉生态系统</span>
+      <span class="tag safety">攀爬注意·量力而行</span>
+    </div>
+
+    <div class="callout info">
+      <strong>研学知识点</strong>
+      梵净山是5亿年前从海底隆起的变质岩山体，蘑菇石是差异风化作用的典型产物——上部硬质变质砂岩抗风化，下部软质板岩被侵蚀，形成上大下小的蘑菇形状。梵净山也是联合国"人与生物圈"保护区，黔金丝猴和梵净山冷杉是全球独有的物种。
+    </div>
+    <div class="callout warn">
+      <strong>安全提醒</strong>
+      红云金顶攀爬段非常陡，有恐高或体力不支就不要勉强。雨天岩石湿滑，台阶窄，要抓紧铁链。排队人多时山顶风大会冷，薄外套必带。如果孩子体力一般，可以在蘑菇石附近观赏即可，红云金顶量力而行。
+    </div>
+  </article>
+
+  <!-- ─── Day 8 ─── -->
+  <article class="day-card" id="day8">
+    <div class="day-num">Day 8</div>
+    <h3>返程 · 最后的贵州味道</h3>
+    <span class="drive">🚗 江口 → 贵阳，约300km / 4h，经G56杭瑞高速</span>
+
+    <ul class="timeline">
+      <li><strong>08:00</strong> — 早餐后从江口出发，返回贵阳。</li>
+      <li><strong>12:00</strong> — 抵达贵阳。如果航班在傍晚/晚上，中间有3-4小时可以安排：
+        <br>· 选项A：<strong>贵州省博物馆</strong>（免费，需提前预约）——了解贵州从古生物化石到多民族文化的完整历史，研学收尾的好选择。
+        <br>· 选项B：<strong>青岩古镇</strong>（¥10）——贵阳南郊明代军事古镇，吃青岩猪脚、糕粑稀饭，买点伴手礼。
+      </li>
+      <li><strong>14:30</strong> — 午餐：省博附近 <strong>丝恋红汤丝娃娃</strong> 或 <strong>但家香酥鸭</strong> 打包带走，人均¥50。</li>
+      <li><strong>15:30</strong> — 前往机场，还车（加满油、拍还车照片）。预留 <strong>至少1.5小时</strong> 办理还车+安检。</li>
+      <li><strong>17:00-19:00</strong> — 贵阳 ✈ 福州，回家！</li>
+    </ul>
+
+    <div class="tags">
+      <span class="tag food">青岩猪脚 ¥60/人</span>
+      <span class="tag food">丝娃娃 ¥50/人</span>
+      <span class="tag edu">贵州省博物馆</span>
+    </div>
+
+    <div class="callout tip">
+      <strong>小贴士</strong>
+      最后一天航班尽量选傍晚或晚上，给路上留足缓冲时间。贵州高速山多雾多，不要赶时间。还车前加满油（租车公司通常要求满油还车），拍好车身四周照片防止后续纠纷。
+    </div>
+  </article>
+</section>
+
+<!-- ═══════════ 3. 费用预算 ═══════════ -->
+<section id="budget">
+  <h2>费用预算（3人合计）</h2>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>项目</th><th>明细</th><th>预估费用（元）</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="2">✈️ 往返机票</td><td>福州⇄贵阳 × 3人</td><td>4,200 – 5,400</td><td>暑假旺季，提前1个月订票</td></tr>
+      <tr><td></td><td></td><td>关注各航司会员日特价</td></tr>
+      <tr><td rowspan="3">🚗 租车</td><td>租车费（7天）</td><td>1,750 – 2,800</td><td>经济型SUV ¥250-400/天</td></tr>
+      <tr><td>油费（~1500km）</td><td>1,000 – 1,200</td><td>贵州山路油耗偏高</td></tr>
+      <tr><td>高速过路费</td><td>600 – 800</td><td>贵州高速桥隧多，收费偏高</td></tr>
+      <tr><td rowspan="2">🏨 住宿</td><td>7晚 × ¥350-500</td><td>2,450 – 3,500</td><td>亚朵/同档次酒店</td></tr>
+      <tr><td></td><td></td><td>苗寨1晚可能略贵</td></tr>
+      <tr><td rowspan="4">🎫 门票</td><td>黄果树 ¥210/人</td><td>630</td><td>含观光车</td></tr>
+      <tr><td>小七孔 ¥160/人</td><td>480</td><td>含观光车</td></tr>
+      <tr><td>西江苗寨 ¥110/人</td><td>330</td><td>门票¥90+观光车¥20</td></tr>
+      <tr><td>梵净山 ¥288/人</td><td>864</td><td>门票¥100+索道¥140+观光车¥48</td></tr>
+      <tr><td>🍜 餐饮</td><td>¥180/人/天 × 8天</td><td>4,320</td><td>含零食饮料</td></tr>
+      <tr><td>📦 其他</td><td>停车费、保险、纪念品</td><td>500 – 800</td><td>预留弹性空间</td></tr>
+      <tr style="font-weight:bold; color:var(--accent);"><td>💰 合计</td><td></td><td>~17,200 – 21,200</td><td>人均约 ¥5,700 – 7,000</td></tr>
+      <tr><td colspan="4" style="color:var(--accent2); font-size:.82rem;">学生优惠：15岁凭身份证在大部分景区<strong>免门票</strong>（只需买观光车/索道），实际门票支出可降至 ~¥1,000-1,200（3人）</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- Visual bar -->
+  <div class="budget-legend">
+    <span><i style="background:#5b9bd5"></i> 机票 28%</span>
+    <span><i style="background:#ed7d31"></i> 住宿 17%</span>
+    <span><i style="background:#a5a5a5"></i> 租车+油费 21%</span>
+    <span><i style="background:#ffc000"></i> 门票 13%</span>
+    <span><i style="background:#70ad47"></i> 餐饮 21%</span>
+  </div>
+  <div class="budget-bar">
+    <div style="width:28%;background:#5b9bd5"></div>
+    <div style="width:17%;background:#ed7d31"></div>
+    <div style="width:21%;background:#a5a5a5"></div>
+    <div style="width:13%;background:#ffc000"></div>
+    <div style="width:21%;background:#70ad47"></div>
+  </div>
+</section>
+
+<!-- ═══════════ 4. 实用贴士 ═══════════ -->
+<section id="tips">
+  <h2>实用贴士</h2>
+
+  <h3>装备清单</h3>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px;">
+    <div style="background:var(--card);border-radius:8px;padding:12px;">
+      <h4 style="margin-top:0;">衣物类</h4>
+      <ul class="checklist">
+        <li>速干T恤 ×4-5件（出汗多）</li>
+        <li>薄外套/防晒衣（山上冷）</li>
+        <li>运动鞋 + 凉鞋（蹚水用）</li>
+        <li>雨衣（比雨伞实用！）</li>
+        <li>遮阳帽 + 墨镜</li>
+        <li>备用衣裤1套（车上放）</li>
+      </ul>
+    </div>
+    <div style="background:var(--card);border-radius:8px;padding:12px;">
+      <h4 style="margin-top:0;">电子/证件</h4>
+      <ul class="checklist">
+        <li>身份证（3人，全程需要）</li>
+        <li>驾驶证（租车用）</li>
+        <li>充电宝 ×2（大容量）</li>
+        <li>手机防水袋</li>
+        <li>车载手机支架</li>
+        <li>Type-C/Lightning充电线</li>
+      </ul>
+    </div>
+    <div style="background:var(--card);border-radius:8px;padding:12px;">
+      <h4 style="margin-top:0;">药品/防护</h4>
+      <ul class="checklist">
+        <li>防晒霜 SPF50+</li>
+        <li>驱蚊液（贵州蚊虫多）</li>
+        <li>藿香正气水（防中暑）</li>
+        <li>创可贴 + 碘伏棉签</li>
+        <li>晕车药 / 肠胃药</li>
+        <li>蒙脱石散（水土不服备用）</li>
+      </ul>
+    </div>
+    <div style="background:var(--card);border-radius:8px;padding:12px;">
+      <h4 style="margin-top:0;">车上补给</h4>
+      <ul class="checklist">
+        <li>瓶装水（至少1箱）</li>
+        <li>干粮：面包、火腿肠、坚果</li>
+        <li>口香糖/薄荷糖（提神）</li>
+        <li>垃圾袋</li>
+        <li>湿纸巾</li>
+        <li>U型枕（车上睡觉用）</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>天气与季节</h3>
+  <div class="callout info">
+    <strong>贵州7-8月天气特点</strong>
+    贵阳/安顺：21-28℃，凉爽。荔波：24-32℃，偏热但比福州凉快多了。梵净山山顶：15-22℃，需薄外套。全省"天无三日晴"——随时可能飘一阵雨，但通常很快就停。带伞+雨衣双重保障。
+  </div>
+
+  <h3>山路驾驶安全</h3>
+  <div class="callout warn">
+    <strong>贵州自驾注意事项</strong>
+    <ul style="margin:8px 0 0 16px; font-size:.88rem;">
+      <li>高速隧道极多，进隧道前减速、开大灯、不随意变道</li>
+      <li>部分路段团雾多发（尤其早晨），开雾灯、降速、保持车距</li>
+      <li>山区服务区间距较大（有时50km+），出发前加满油</li>
+      <li>导航下载贵州离线地图，山区部分路段信号弱</li>
+      <li>遇到牲畜过路（尤其村道）减速让行，不要鸣笛惊吓</li>
+      <li>疲劳驾驶是大忌——贵州高速弯多，注意力消耗大，每1.5h一定休息</li>
+    </ul>
+  </div>
+
+  <h3>紧急联系</h3>
+  <div style="background:var(--card);border-radius:8px;padding:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:8px; font-size:.9rem;">
+    <div>报警：<strong style="color:var(--accent2)">110</strong></div>
+    <div>急救：<strong style="color:var(--accent2)">120</strong></div>
+    <div>交通事故：<strong style="color:var(--accent2)">122</strong></div>
+    <div>高速救援：<strong style="color:var(--accent2)">12122</strong></div>
+    <div>旅游投诉：<strong style="color:var(--accent2)">12301</strong></div>
+    <div>消费者投诉：<strong style="color:var(--accent2)">12315</strong></div>
+  </div>
+
+  <h3>省钱技巧</h3>
+  <ul style="padding-left:20px;">
+    <li>全国在校大中小学生凭身份证（15岁直接用身份证）贵州大部分景区<strong>免门票</strong>（黄果树、小七孔、西江苗寨、梵净山全免！只需买观光车/索道）——务必带身份证！</li>
+    <li>贵州暑期经常推出"避暑游"优惠政策，部分省份游客免票或半价，出行前关注"贵州省文化和旅游厅"公众号。</li>
+    <li>门票全部在线预订，比现场便宜且不用排队。</li>
+    <li>住宿用华住会App订亚朵（有会员价），提前订有早鸟折扣。</li>
+  </ul>
+</section>
+
+<!-- ═══════════ 5. 备选方案 ═══════════ -->
+<section id="alt">
+  <h2>备选方案 & 弹性调整</h2>
+
+  <h3>雨天替代景点</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>原计划</th><th>雨天替代</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td>黄果树瀑布</td><td><strong>龙宫</strong>（安顺，¥130）</td><td>溶洞景区不受雨影响，且雨天瀑布水量太大反而不安全</td></tr>
+      <tr><td>小七孔</td><td><strong>荔波古镇 + 茂兰自然保护区</strong>（轻度）</td><td>小七孔雨天水上森林可能关闭，古镇不受影响</td></tr>
+      <tr><td>西江苗寨</td><td><strong>凯里民族博物馆</strong>（免费）</td><td>博物馆室内参观，苗族文化展示丰富</td></tr>
+      <tr><td>梵净山</td><td><strong>铜仁古城 + 大明边城</strong></td><td>梵净山雨天能见度差且危险，山下古城替代</td></tr>
+      <tr><td>青岩古镇</td><td><strong>贵州省博物馆</strong>（免费）</td><td>室内，内容丰富，孩子会喜欢地质和民族展区</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>身体不适调整</h3>
+  <ul style="padding-left:20px;">
+    <li><strong>轻度高反/疲劳</strong>：贵州海拔1000-2500m，一般不会严重高反。梵净山顶约2500m，若感觉头晕、乏力，不登金顶，蘑菇石附近休息即可。</li>
+    <li><strong>肠胃不适</strong>：贵州菜偏酸辣油，如果肠胃不适应，找粥粉面店吃清淡的牛肉粉/肠旺面（不放辣）。</li>
+    <li><strong>中暑</strong>：荔波温度较高，正午尽量在阴凉处，多喝水。藿香正气水随身带。</li>
+    <li><strong>航班延误/取消</strong>：暑假雷雨多，建议买含延误险的机票。预留1天弹性时间最理想，如果8天用完就来不及调整。</li>
+  </ul>
+
+  <h3>如果梵净山抢不到票</h3>
+  <div class="callout danger">
+    <strong>B计划：梵净山周边替代</strong>
+    方案1：改去 <strong>镇远古镇</strong>（江口出发约1.5h），贵州最美古镇，舞阳河穿城而过，住一晚临河客栈非常惬意。<br>
+    方案2：改去 <strong>凤凰古城</strong>（跨省到湖南，江口出发约1.5h），沈从文笔下的边城，商业化但值得一逛。<br>
+    方案3：多住西江一晚，Day6从西江直接回贵阳，途中经过 <strong>凯里下司古镇</strong> 和 <strong>贵阳青岩古镇</strong>。
+  </div>
+
+  <h3>行程简化（如果太累）</h3>
+  <p style="color:var(--text-secondary);">可以砍掉梵净山（Day6-7），改为：Day5苗寨 → Day6凯里+镇远 → Day7镇远 → Day8回贵阳。少开约500km车，节奏更轻松。梵净山虽然壮观，但爬山强度大+门票难抢，如果家庭成员体力一般或天气不好，砍掉是明智之选。</p>
+</section>
+
+<!-- ═══════════ 6. 15岁青少年专属建议 ═══════════ -->
+<section>
+  <h2>给15岁少年的专属推荐</h2>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px;">
+    <div style="background:var(--card);border-radius:10px;padding:16px;border-top:3px solid var(--accent);">
+      <h4 style="margin-top:0;">最出片打卡点</h4>
+      <ol style="padding-left:18px; font-size:.9rem; line-height:2;">
+        <li>黄果树·水帘洞内向外拍</li>
+        <li>小七孔·卧龙潭碧水倒影</li>
+        <li>小七孔古桥·穿浅色衣服站桥上</li>
+        <li>西江观景台·万家灯火夜景</li>
+        <li>西江5号风雨桥·梯田背景</li>
+        <li>梵净山蘑菇石·标志性合影</li>
+        <li>红云金顶·90°岩壁攀爬照</li>
+      </ol>
+    </div>
+
+    <div style="background:var(--card);border-radius:10px;padding:16px;border-top:3px solid var(--accent2);">
+      <h4 style="margin-top:0;">最有趣的体验</h4>
+      <ol style="padding-left:18px; font-size:.9rem; line-height:2;">
+        <li>小七孔·鸳鸯湖铁皮船划进水迷宫</li>
+        <li>小七孔·水上森林蹚溪水</li>
+        <li>黄果树·穿水帘洞（水从头顶过）</li>
+        <li>梵净山·红云金顶手脚并用攀岩</li>
+        <li>西江·蜡染/苗绣非遗手作</li>
+        <li>黔灵山·和猕猴斗智斗勇</li>
+      </ol>
+    </div>
+
+    <div style="background:var(--card);border-radius:10px;padding:16px;border-top:3px solid #b080e0;">
+      <h4 style="margin-top:0;">研学知识点速览</h4>
+      <ol style="padding-left:18px; font-size:.9rem; line-height:2;">
+        <li>黄果树=喀斯特侵蚀裂点型瀑布</li>
+        <li>小七孔=喀斯特水上森林生态</li>
+        <li>梵净山=10亿年变质岩+差异风化</li>
+        <li>西江=苗族干栏式建筑智慧</li>
+        <li>贵州=中国喀斯特地貌最集中区域</li>
+        <li>武陵山脉=中国第二阶梯向第三阶梯过渡带</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<footer>
+  <p>贵州自驾游攻略 · 2026年暑假 · 福州出发</p>
+  <p style="color:var(--text-secondary); font-size:.75rem;">
+    安全第一 · 量力而行 · 享受旅程 🚗💨
+  </p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  // 各站坐标
+  var points = [
+    { name: '贵阳（起点）', sub: 'Day1 · 取车出发', lat: 26.647, lng: 106.630, color: '#ff6b6b', icon: '1' },
+    { name: '黄果树瀑布', sub: 'Day2 · 亚洲第一大瀑布', lat: 25.992, lng: 105.666, color: '#4fc3a8', icon: '2' },
+    { name: '荔波小七孔', sub: 'Day3-4 · 地球绿宝石', lat: 25.370, lng: 107.883, color: '#4da6ff', icon: '3' },
+    { name: '西江千户苗寨', sub: 'Day5 · 万家灯火', lat: 26.490, lng: 108.170, color: '#f0a060', icon: '4' },
+    { name: '梵净山', sub: 'Day6-7 · 天空之城', lat: 27.910, lng: 108.690, color: '#c084fc', icon: '5' },
+    { name: '贵阳（终点）', sub: 'Day8 · 还车返程', lat: 26.647, lng: 106.630, color: '#ff6b6b', icon: '↺' }
+  ];
+
+  // 路线段（带中间点粗略跟随高速）
+  var routes = [
+    [[26.647,106.630],[26.40,106.35],[26.25,105.93],[25.992,105.666]], // 贵阳→黄果树 G60
+    [[25.992,105.666],[26.15,106.25],[26.35,106.65],[26.20,107.10],[25.80,107.50],[25.370,107.883]], // 黄果树→荔波
+    [[25.370,107.883],[25.80,107.90],[26.20,108.05],[26.490,108.170]], // 荔波→西江
+    [[26.490,108.170],[26.70,108.35],[27.20,108.50],[27.60,108.60],[27.910,108.690]], // 西江→梵净山
+    [[27.910,108.690],[27.50,108.00],[27.00,107.20],[26.647,106.630]] // 梵净山→贵阳
+  ];
+
+  var map = L.map('routeMap', {
+    center: [26.6, 107.2],
+    zoom: 7,
+    zoomControl: true,
+    attributionControl: false
+  });
+
+  // 高德地图瓦片（国内访问快，无需API Key）
+  L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+    subdomains: ['1','2','3','4'],
+    maxZoom: 18,
+    minZoom: 6
+  }).addTo(map);
+
+  // 画路线
+  routes.forEach(function(seg) {
+    L.polyline(seg, {
+      color: '#f0a060',
+      weight: 3.5,
+      opacity: 0.7,
+      dashArray: '8,6',
+      lineJoin: 'round'
+    }).addTo(map);
+  });
+
+  // 自定义圆形标记
+  function circleMarker(p, i) {
+    var isFirst = i === 0;
+    var isLast = i === points.length - 1;
+    var radius = (isFirst || isLast) ? 9 : 8;
+    var opts = {
+      radius: radius,
+      fillColor: p.color,
+      color: '#fff',
+      weight: 2.5,
+      fillOpacity: 0.95
+    };
+    var m = L.circleMarker([p.lat, p.lng], opts).addTo(map);
+    m.bindPopup('<strong>' + p.name + '</strong><br><span style="color:#9898b0">' + p.sub + '</span>');
+    // 编号标签
+    if (!isLast || p.icon === '↺') {
+      // 终点直接用第一个点的坐标，不重复加标签
+    }
+    return m;
+  }
+
+  points.forEach(function(p, i) {
+    if (i === points.length - 1) return; // 终点与起点同坐标，不重复标记
+    circleMarker(p, i);
+  });
+
+  // 机场/起终点图标
+  var airportIcon = L.divIcon({
+    className: '',
+    html: '<div style="background:#ff6b6b;color:#fff;width:22px;height:22px;border-radius:50%;text-align:center;line-height:22px;font-size:11px;font-weight:bold;border:2px solid #fff;box-shadow:0 0 6px rgba(255,107,107,.5)">✈</div>',
+    iconSize: [22, 22],
+    iconAnchor: [11, 11]
+  });
+  L.marker([26.538, 106.801], {icon: airportIcon})
+    .bindPopup('<strong>贵阳龙洞堡机场</strong><br><span style="color:#9898b0">取车/还车 · 福州往返</span>')
+    .addTo(map);
+
+  // 适配视野
+  map.fitBounds([
+    [25.30, 105.60],
+    [27.95, 108.75]
+  ], {padding: [30, 30]});
+})();
+</script>
+
+</body>
+</html>
